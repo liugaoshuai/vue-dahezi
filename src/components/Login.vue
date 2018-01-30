@@ -1,37 +1,29 @@
-
-
 <template>
-    <router-view/>
+    <div class="app fs16">模拟登陆页</div>
 </template>
-
 <script>
     export default {
         data() {
             return {
             };
         },
-        created: function () {
-          this.loginFun();
-        },
         mounted: function () {
+            this.loginFun();
         },
         methods: {
             loginFun: function () {
                 var self = this,
-                    url = 'http://192.168.0.144/wxcw/ulogin.json',
+                    url = 'http://test.yixiutong.cn/cwtest/ulogin.json',
                     params = {
                         storeId: 1002,
                         mobile: 18668008363,
                     },
                     succeed = function (res) {
-                        if(res.data.status === 0){
-                            self.$store.state.wId = res.data.data
-                        }else{
-                            self.$mint.MessageBox('提示', '登陆失败');
-                        }
+                        self.$store.state.wId = res.data.data;
+                        document.cookie="jsessionid="+res.data.data;
                     };
                 self.$axiosGet(url, params, succeed);
             }
-         }
+        }
     }
 </script>
