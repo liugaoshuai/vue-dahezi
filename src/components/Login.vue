@@ -21,6 +21,9 @@
                     succeed = function (res) {
                         self.$store.state.wId = res.data.data;
                         document.cookie="jsessionid="+res.data.data;
+                        self.$router.push({
+                            path: './StopCar', 
+                        })
                     };
                 self.$axiosGet(url, params, succeed);
             }

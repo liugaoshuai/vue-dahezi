@@ -83,25 +83,21 @@
             // 洗车机可用项目
             getCarClass: function () {
                 var self = this,
-                    url = 'http://192.168.0.144/wxcw/scan/deviceservice.json',
+                    url = 'http://test.yixiutong.cn/cwtest/scan/deviceservice.json',
                     params = {
                         deviceId: 1002,
                     },
                     succeed = function (res) {
-                        if (res.data.status === 0) {
-                            self.cardClassList = res.data.data;
-                            self.getPayClass(res.data.data[0].id, res.data.data[0].salePrice)
-                        } else {
-                            self.$mint.MessageBox('提示', res.data.message);
-                        }
+                        self.cardClassList = res.data.data;
+                        self.getPayClass(res.data.data[0].id, res.data.data[0].salePrice)
                     };
                 self.$axiosGet(url, params, succeed);
             },
-            // 洗车机可用项目
+            // 获取可用支付方式
             getPayClass: function (id, p) {
                 console.log(id, p)
                 var self = this,
-                    url = 'http://192.168.0.144/wxcw/couponcard/querymatches.json',
+                    url = 'http://test.yixiutong.cn/cwtest/couponcard/querymatches.json',
                     params = {
                         serviceId: id,
                         price: p
@@ -147,7 +143,7 @@
                 }
 
                 var self = this,
-                    url = 'http://192.168.0.144/wxcw/scan/cwpay.json',
+                    url = 'http://test.yixiutong.cn/cwtest/scan/cwpay.json',
                     params = {
                         serviceId: this.cardClassActvie,
                         deviceId: 1002,
@@ -156,11 +152,7 @@
                         cardId:  this.payClassActvie==1 || this.payClassActvie==2?this.payClassId:'',
                     },
                     succeed = function (res) {
-                        if (res.data.status == 0) {
-                            self.$router.push({path: '/AttentionMatters', query: {orderId: res.data.data.orderId}})
-                        } else {
-                            self.$mint.MessageBox('提示', res.data.message);
-                        }
+                        self.$router.push({path: '/AttentionMatters', query: {orderId: res.data.data.orderId}})
                     };
                 self.$axiosGet(url, params, succeed);
             },
@@ -177,7 +169,7 @@
 
     .box-header-class li {
         float: left;
-        width: 16rem;
+        width: 40%;
         border-radius: 0.5rem;
         padding: 1rem 0;
         -moz-box-shadow: 1px 1px 1px #d3d3d3;

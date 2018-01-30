@@ -21,6 +21,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     wId: '',
+    orderId: '', // 订单id
   }
 })
 import Methods from './script/common.js'
