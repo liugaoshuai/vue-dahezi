@@ -8,6 +8,7 @@
             };
         },
         mounted: function () {
+            
             this.loginFun();
         },
         methods: {

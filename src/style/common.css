@@ -7,7 +7,6 @@
     clear: both;
     visibility: hidden
 }
-
 /* 抽调公共css */
 .mgtb10{margin: 1rem 0;}
 .mgtb20{margin: 2rem 0;}
@@ -69,7 +68,6 @@
     color: #f39800;
     font-size: 1.4rem;
     border: 1px solid #f39800;
-    margin: 0.2rem;
 }
 .common-tab a.active{
     background: #f39800;
@@ -111,26 +109,7 @@ h3.common-title{
 .common-item+.common-item{
     border-top: 1px solid #e6e6e6;
 }
-.common-footer-btn{
-    border-top: 1px solid #e6e6e6;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    line-height: 5rem;
-    height: 5rem;
-    padding-left: 2rem;
-    background: #fff;
-}
 
-.common-footer-btn .btn{
-    position: absolute;
-    right: 0;
-    top: -1px;
-    height: 5rem;
-    line-height: 5rem;
-    width: 12rem;
-}
 
 
 /* img */
@@ -172,19 +151,19 @@ h3.common-title{
     background: url(../assets/card_month.png) no-repeat center;
     background-size: 32rem 14rem;
     height: 14rem;
-    width: 32rem;
+    width: 100%;
 }
 .imgurl07{
     background: url(../assets/icon_buycard_selected.png) no-repeat center;
-    background-size: 3.75rem 3.75rem;
-    height: 3.75rem;
-    width: 3.75rem;
+    background-size: 4rem 4rem;
+    height: 4rem;
+    width: 100%;
 }
 .imgurl08{
     background: url(../assets/icon_my_selected.png) no-repeat center;
-    background-size: 3.75rem 3.75rem;
-    height: 3.75rem;
-    width: 3.75rem;
+    background-size: 4rem 4rem;
+    height: 4rem;
+    width: 100%;
 }
 .imgurl09{
     background: url(../assets/icon_Scancode.png) no-repeat center;
@@ -192,23 +171,116 @@ h3.common-title{
     height: 5.5rem;
     width: 5.5rem;
 }
+.imgurl10{
+    background: url(../assets/icon_noagree.png) no-repeat center;
+    background-size: 1.2rem 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+.imgurl11{
+    background: url(../assets/icon_agree.png) no-repeat center;
+    background-size: 1.2rem 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+}
 
 
 
 
 
 
-.common-footer-index{
+.commonBg{
+    background: -webkit-linear-gradient(left top, #FF9A00 , #FFDB00); /* Safari 5.1 - 6.0 */  background: -o-linear-gradient(bottom right, #FF9A00, #FFDB00); /* Opera 11.1 - 12.0 */  background: -moz-linear-gradient(bottom right, #FF9A00, #FFDB00); /* Firefox 3.6 - 15 */  background: linear-gradient(to bottom right, #FF9A00 , #FFDB00); /* 标准的语法 */
+}
+.common-footer{
     position: fixed;
     left: 0;
     bottom: 0;
     right: 0;
-    height: 72px;
-    line-height: 72px;
+    height: 6rem;
+    line-height: 6rem;
     background: #fff;
+    font-size: 1.2rem;
 }
-.commonBg{
-    background: -webkit-linear-gradient(left top, #FF9A00 , #FFDB00); /* Safari 5.1 - 6.0 */  background: -o-linear-gradient(bottom right, #FF9A00, #FFDB00); /* Opera 11.1 - 12.0 */  background: -moz-linear-gradient(bottom right, #FF9A00, #FFDB00); /* Firefox 3.6 - 15 */  background: linear-gradient(to bottom right, #FF9A00 , #FFDB00); /* 标准的语法 */
+.footer-saoyisao{
+    padding: 1rem;
+    position: absolute;
+    left: 50%;
+    top: -3.5rem;
+    margin-left: -3.5rem;
+    background: #fff;
+    border-radius: 50%;
+    width: 7.5rem;
+    text-align: center;
 }
-
+.footer-text{
+    height: 2rem;
+    line-height: 2rem;
+    width: 100%;
+}
+.footer-box{
+    text-align: center;
+    float: left;
+    width: 50%;
+}
+.footer-box.pdr{
+    padding-right: 3.75rem;
+}
+.footer-box.pdl{
+    padding-left: 3.75rem;
+}
+.footer-num{
+    padding-right: 12rem;
+    padding-left: 3rem;
+}
+.footer-btn{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 6rem;
+    line-height: 6rem;
+    width: 12rem;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #fff;
+}
+.footer-num .name{
+    font-size: 1.4rem;
+    line-height: 6rem;
+    height: 6rem;
+    display: inline-block;
+}
+.footer-num .num{
+    font-size: 2.4rem;
+    line-height: 6rem;
+    height: 6rem;
+    color: #f39800;
+    display: inline-block;
+}
+.card-xieyi{
+    line-height: 2.4rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 6rem;
+    width: 100%;
+    border-bottom: 1px solid #d3d3d3;
+}
+.agreement{
+    padding: 1rem;
+}
+.agreement h4{
+    font-size: 1.8rem;
+    line-height: 4rem;
+    text-align: center;
+}
+.agreement p{
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+.card-detail-con{
+    padding-bottom: 11rem;
+}
 

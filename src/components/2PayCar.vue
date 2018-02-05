@@ -4,7 +4,7 @@
             <div class="box-header mgb10 pd10 bgbai">
                 <h3 class="common-title">请选择洗车项目</h3>
                 <ul class="box-header-class clearfix">
-                    <li class="tac mgr10" v-for="item in cardClassList" @click="getPayClass(item.id,item.salePrice)" v-bind:class="{commonBg: cardClassActvie == item.id}"
+                    <li class="tac mgr10 mgb10" v-for="item in cardClassList" @click="getPayClass(item.id,item.salePrice)" v-bind:class="{commonBg: cardClassActvie == item.id}"
                         :key="item.id">
                         <p class="fs16" v-text="item.name">{{item.name}}</p>
                         <p class="fs12" v-text="item.description?item.description:'洗车项目说明'">{{item.description?item.description:'洗车项目说明'}}</p>
@@ -15,19 +15,19 @@
             <div class="box-content mgb10 pd10 bgbai">
                 <h3 class="common-title">请选择支付方式</h3>
                 <ul class="box-content-class clearfix">
-                    <li class="pd10 mgr10" v-if="ciCard.name" @click="payClassClick(1,ciCard.id)" v-bind:class="{commonBg: payClassActvie == 1}">
+                    <li class="pd10 mgr10 mgb10" v-if="ciCard.name" @click="payClassClick(1,ciCard.id)" v-bind:class="{commonBg: payClassActvie == 1}">
                         <p class="fs14">{{ciCard.typeCN}}</p>
                         <p class="fs16 mgt10">{{ciCard.name}}</p>
                         <i class="img imgurl03"></i>
                         <p class="fs12">有效期</br>{{ciCard.expireTimeCN}}</p>
                     </li>
-                    <li class="pd10 mgr10" v-if="yueCard.name" @click="payClassClick(2,yueCard.id)" v-bind:class="{commonBg: payClassActvie == 2}">
+                    <li class="pd10 mgr10 mgb10" v-if="yueCard.name" @click="payClassClick(2,yueCard.id)" v-bind:class="{commonBg: payClassActvie == 2}">
                         <p class="fs14">{{yueCard.typeCN}}</p>
                         <p class="fs16 mgt10">{{yueCard.name}}</p>
                         <i class="img imgurl03"></i>
                         <p class="fs12">有效期</br>{{yueCard.expireTimeCN}}</p>
                     </li>
-                    <li class="pd10 mgr10" v-if="juanCard.name" @click="payClassClick(3,juanCard.id)" v-bind:class="{commonBg: payClassActvie == 3}">
+                    <li class="pd10 mgr10 mgb10" v-if="juanCard.name" @click="payClassClick(3,juanCard.id)" v-bind:class="{commonBg: payClassActvie == 3}">
                         <p class="fs14">{{juanCard.typeCN}}</p>
                         <p class="fs16 mgt10">{{juanCard.name}}</p>
                         <i class="img imgurl03"></i>
@@ -181,6 +181,7 @@
         text-align: center;
         float: left;
         border-radius: 0.5rem;
+        height: 16rem;
         -moz-box-shadow: 1px 1px 1px #d3d3d3;
         -webkit-box-shadow: 1px 1px 1px #d3d3d3;
         box-shadow: 1px 1px 1px #d3d3d3;

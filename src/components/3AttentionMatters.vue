@@ -49,8 +49,8 @@
                     <li>1.请将车停在黄线内，并回正方向盘，以免发生刮擦；</li>
                     <li>2.洗车期间，严禁打开车窗或车门；</li>
                     <li>3.请勿倒车进入大盒子，以免影响洗车效果；</li>
-                    <li>4.洗车期间，请坐在车内或站在大盒子2米外，防止安全隐患；</li>
-                    <li>5.车辆尺寸限制：高度
+                    <li>4.洗车期间，请坐在车内或站在洗车机外；</li>
+                    <li>5.车辆尺寸：高度
                         <2.3米，宽度<2.4米，长度<5.5米；</li>
                             <li>6.请收好超长加装件，以免洗车时损坏；</li>
                 </ul>
@@ -71,6 +71,7 @@ export default {
         return {
             time: 9,
             btnActive: true,
+            orderId: '',
         };
     },
 
@@ -83,7 +84,10 @@ export default {
                 self.btnActive = false;
                 clearInterval(int)
             }
-        }, 1000)
+        }, 1000);
+        if (this.$route.query.orderId > 0) {
+            this.orderId = this.$route.query.orderId
+        }
     },
 
     methods: {
@@ -93,11 +97,13 @@ export default {
             if (self.time == 0) {
                 self.$mint.MessageBox.confirm('是否开始洗车？').then(action => {
                     var url = 'http://test.yixiutong.cn/cwtest/scan/docw.json',
-                        params = {},
+                        params = {
+                            orderId: this.orderId,
+                        },
                         succeed = function (res) {
                             self.$router.push({
                                 path: './CleaningCar', 
-                                query: { time: res.data.data.totalTime }
+                                query: { time: res.data.data.totalTime,orderId: self.orderId }
                             })
                         };
                     self.$axiosGet(url, params, succeed);

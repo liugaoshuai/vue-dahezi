@@ -24,6 +24,9 @@ import MyPlateNumber from '@/components/5MyPlateNumber' // 停车确认
 import CardIndex from '@/components/6CardIndex' // 办卡首页
 import CardDetail from '@/components/7CardDetail' // 办卡详情
 
+import Dahezifuwuxieyi from '@/components/agreement/Dahezifuwuxieyi' // 办卡详情
+
+
 
 
 
@@ -113,6 +116,10 @@ export default new Router({
       path: '/MyMessage',
       name: 'MyMessage',
       component: MyMessage
+    },{
+      path: '/agreement/Dahezifuwuxieyi',
+      name: 'Dahezifuwuxieyi',
+      component: Dahezifuwuxieyi
     }
   ]
 })

@@ -3,7 +3,6 @@
         <div class="box">
             <div class="box-header mgb20 pd10">
                 <div class="tac mgtb10">
-    
                     <div class="common-tab clearfix tac">
                         <a href="javascript:void(0)"
                            @click="getCardList(item.id)"
@@ -18,11 +17,10 @@
                         <div class="img imgurl05"
                              v-for="item in cardArrTest"
                              :key="item.id">
-                            <p class="fs16"><span class="fs48">{{item.limitCount}}</span>次</p>
+                            <!-- <p class="fs16"><span class="fs48">{{item.limitCount}}</span>次</p>
                             <p class="fs16">¥{{item.salePrice}}</p>
-                            <p class="fs12 mgt10">有效期{{item.title}}天</p>
+                            <p class="fs12 mgt10">有效期{{item.title}}天</p> -->
                         </div>
-    
                     </li>
                 </ul>
                 <h3 class="common-title">请选择月卡</h3>
@@ -35,12 +33,18 @@
                     </li>
                 </ul>
             </div>
-            
         </div>
-        <div class="common-footer-index clearfix">
-            <div class="tac wbf50 fl pdt10"><i class="img imgurl07"></i><p class="fs12">办卡</p></div>
-            <div class="tac wbf50 fl pdt10"><i class="img imgurl08"></i><p class="fs12">我的</p></div>
-            <div class="saoyisao"><i class="img imgurl09"></i></div>
+
+        <div class="common-footer clearfix">
+            <div class="footer-box pdr">
+                <div class="img imgurl07 fl"></div><div class="fl footer-text">办卡</div>
+            </div>
+            <div class="footer-box pdl">
+                <div class="img imgurl08 fl"></div><div class="fl footer-text">我的</div>
+            </div>
+            <div class="footer-saoyisao clearfix">
+                <div class="img imgurl09 fl"></div><div class="fl footer-text">扫码洗车</div>
+            </div>
         </div>
     </div>
 </template>
@@ -126,21 +130,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.app{
-    position: relative;
-}
-
-.imgurl05{
-    padding: 5rem 0;
-}
-.saoyisao{
-    padding: 1rem;
-    position: absolute;
-    left: 50%;
-    top: -3.5rem;
-    margin-left: -3.5rem;
-}
-
-</style>

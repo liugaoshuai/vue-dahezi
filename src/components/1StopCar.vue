@@ -40,6 +40,12 @@ export default {
     },
     mounted: function () {
         this.isUserOrder();
+        if (this.$route.query.deviceId > 0) {
+            this.$mint.MessageBox(this.$route.query.deviceId);
+        }
+        if (this.$route.query.jSessionId > 0) {
+            this.$mint.MessageBox(this.$route.query.jSessionId);
+        }
     },
     methods: {
         // 检查客户是否存在订单
@@ -57,8 +63,8 @@ export default {
                         self.$mint.MessageBox.confirm('存在已支付，未使用的洗车订单，是否继续？').then(action => {
                             self.$router.push({
                                 path: './AttentionMatters',
+                                query: {orderId:res.data.data.pendingOrderId}
                             })
-                            self.$axiosGet(url, params, succeed);
                         });
                     }else{
                         self.isCarWasherNormal();
@@ -106,10 +112,10 @@ export default {
                     orderId: id,
                 },
                 succeed = function (res) {
-                    var time = res.data.data.passTime
+                    var time = res.data.data.leftTime
                     self.$router.push({
                                 path: './CleaningCar', 
-                                query: { time: time }
+                                query: { time: time,orderId: id}
                             })
                 };
             self.$axiosGet(url, params, succeed);
