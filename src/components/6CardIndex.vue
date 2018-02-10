@@ -1,7 +1,7 @@
 <template>
-    <div class="app">
-        <div class="box">
-            <div class="box-header mgb20 pd10">
+    <div class="">
+        <div class="">
+            <div class="card">
                 <div class="tac mgtb10">
                     <div class="common-tab clearfix tac">
                         <a href="javascript:void(0)"
@@ -10,40 +10,52 @@
                            :class="{active: active == item.id}">{{item.name}}</a>
                     </div>
                 </div>
-                <h3 class="common-title">请选择次卡</h3>
-                
-                <ul class="box-header-class clearfix">
-                    <li class="tac active fl" @click="goDetail">
-                        <div class="img imgurl05"
-                             v-for="item in cardArrTest"
-                             :key="item.id">
-                            <!-- <p class="fs16"><span class="fs48">{{item.limitCount}}</span>次</p>
-                            <p class="fs16">¥{{item.salePrice}}</p>
-                            <p class="fs12 mgt10">有效期{{item.title}}天</p> -->
-                        </div>
-                    </li>
-                </ul>
-                <h3 class="common-title">请选择月卡</h3>
-                <ul class="box-content-class clearfix mgt10">
-                    <li class="tal active" @click="goDetail">
-                        <div class="img imgurl06"
-                             v-for="item in cardMonthArrTest"
-                             :key="item.id">
-                        </div>
-                    </li>
-                </ul>
+                <div v-show="cardArrTest.length>0">
+    
+                    <h3 class="common-title">请选择次卡</h3>
+                    <ul class="box-header-class clearfix">
+                        <li class="tac active fl">
+                            <div class="img imgurl05 card-item"
+                                 v-for="item in cardArrTest"
+                                 :key="item.id"
+                                 @click="goDetail(item)">
+                                <p class="fs16"><span class="fs48">{{item.limitCount}}</span>次</p>
+                                <p class="fs14">¥{{item.salePrice}}</p>
+                                <p class="fs14 mgt10">有效期</br>{{item.createTimeCN}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div v-show="cardMonthArrTest.length>0">
+                    <h3 class="common-title">请选择月卡</h3>
+                    <ul class="clearfix">
+                        <li class="">
+                            <div class="img imgurl06 card-item-month"
+                                 v-for="item in cardMonthArrTest"
+                                 :key="item.id"
+                                 @click="goDetail(item)">
+                                <p class="fs24">{{item.serviceName}}</p>
+                                <p class="fs14 mgt10">¥{{item.salePrice}}</p>
+                                <p class="fs14 mgt10">有效期{{item.createTimeCN}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-
+    
         <div class="common-footer clearfix">
-            <div class="footer-box pdr">
-                <div class="img imgurl07 fl"></div><div class="fl footer-text">办卡</div>
+            <div class="footer-box pdr" @click="goCardIndex">
+                <div class="img imgurl07 fl"></div>
+                <div class="fl footer-text">办卡</div>
             </div>
-            <div class="footer-box pdl">
-                <div class="img imgurl08 fl"></div><div class="fl footer-text">我的</div>
+            <div class="footer-box pdl" @click="goMyIndex">
+                <div class="img imgurl08 fl"></div>
+                <div class="fl footer-text">我的</div>
             </div>
             <div class="footer-saoyisao clearfix">
-                <div class="img imgurl09 fl"></div><div class="fl footer-text">扫码洗车</div>
+                <div class="img imgurl09 fl"></div>
+                <div class="fl footer-text">扫码洗车</div>
             </div>
         </div>
     </div>
@@ -62,22 +74,11 @@ export default {
             paymentNum: 290,
             cardClassArr: [],
             cardArr: [],
-            cardArrTest: [
-                {
-                    limitCount: '24',
-                    salePrice: '370',
-                    title: '360',
-                }
-            ],
-            cardMonthArrTest: [
-                {
-                    limitCount: '24',
-                    salePrice: '370',
-                    title: '360',
-                },
-            ],
+
+            cardArrTest: [], // 次卡
+            cardMonthArrTest: [], // 月卡
             active: '',
-            
+
 
         };
     },
@@ -85,6 +86,18 @@ export default {
         this.getCardClass();
     },
     methods: {
+        goMyIndex: function (){
+            this.$router.push({path: '/MyIndex'})
+        },
+        goCardIndex: function (){
+            this.$router.push({path: '/CardIndex'})
+        },
+        goDetail: function (item){
+            var urlItem = encodeURIComponent(JSON.stringify(item))
+            this.$router.push({path: '/cardDetail', query: {
+                urlItem: urlItem,
+            }})
+        },
         getCardClass: function () {
             var self = this;
             var url = 'http://test.yixiutong.cn/cwtest/goods/getservice.json',
@@ -92,7 +105,7 @@ export default {
                 },
                 succeed = function (res) {
                     self.cardClassArr = res.data.data;
-                    if(self.cardClassArr[0].id){
+                    if (self.cardClassArr[0].id) {
                         self.getCardList(self.cardClassArr[0].id);
                     }
 
@@ -108,7 +121,7 @@ export default {
                     type: 3,
                 },
                 succeed = function (res) {
-                    self.cardArr = res.data.data;
+                    self.cardArrTest = res.data.data;
                 };
             self.$axiosGet(url, params, succeed);
 
@@ -118,14 +131,9 @@ export default {
                     type: 1,
                 },
                 succeed1 = function (res) {
-                    self.cardArr = res.data.data;
+                    self.cardMonthArrTest = res.data.data;
                 };
             self.$axiosGet(url1, params1, succeed1);
-        },
-        goDetail: function () {
-            this.$router.push({
-                                path: './CardDetail', 
-                            })
         },
     }
 }

@@ -1,11 +1,9 @@
 <template>
-    <div class="app pd20">
-        <div class="box pd20">
-            <div class="box-header clearfix tac">
-                <i src="../assets/icon_attention.png"
-                   alt=""
-                   class="img imgurl01 fl"></i>
-                <span class="fs14 tal fl">请观察前方大圆镜</br>确认车辆停在黄线内并拉手刹</span>
+    <div class="pd20">
+        <div class="carstop-box">
+            <div class="carstop-header clearfix">
+                <span class="img imgurl01"></span>
+                <span class="tal fs12">请观察前方大圆镜</br>确认车辆停在黄线内并拉手刹</span>
             </div>
             <div class="box-middle tac">
                 <div class="mgtb20"><img src="../assets/img_Parking.png"
@@ -35,17 +33,11 @@
 export default {
     data() {
         return {
-            isCarStopOk: false,
+            isCarStopOk: false, // 是否停好车
         };
     },
     mounted: function () {
         this.isUserOrder();
-        if (this.$route.query.deviceId > 0) {
-            this.$mint.MessageBox(this.$route.query.deviceId);
-        }
-        if (this.$route.query.jSessionId > 0) {
-            this.$mint.MessageBox(this.$route.query.jSessionId);
-        }
     },
     methods: {
         // 检查客户是否存在订单
@@ -59,15 +51,15 @@ export default {
                     // 如果存在订单进行跳转
                     if (res.data.data.workingOrderId > 0) {
                         self.isCarStatus(res.data.data.workingOrderId);
-                    }else if (res.data.data.pendingOrderId > 0) {
+                    } else if (res.data.data.pendingOrderId > 0) {
                         self.$mint.MessageBox.confirm('存在已支付，未使用的洗车订单，是否继续？').then(action => {
                             self.$router.push({
                                 path: './AttentionMatters',
-                                query: {orderId:res.data.data.pendingOrderId}
+                                query: { orderId: res.data.data.pendingOrderId }
                             })
                         });
-                    }else{
-                        self.isCarWasherNormal();
+                    } else {
+                        self.isCarWasherNormal(); 
                     }
                 };
             self.$axiosGet(url, params, succeed);
@@ -114,9 +106,9 @@ export default {
                 succeed = function (res) {
                     var time = res.data.data.leftTime
                     self.$router.push({
-                                path: './CleaningCar', 
-                                query: { time: time,orderId: id}
-                            })
+                        path: './CleaningCar',
+                        query: { time: time, orderId: id }
+                    })
                 };
             self.$axiosGet(url, params, succeed);
         },
@@ -124,36 +116,3 @@ export default {
 }
 
 </script>
-
-<style scoped>
-.box-icon-warn {
-    display: inline-block;
-    height: 2.5rem;
-    width: 2.5rem;
-}
-
-.box-icon-item {
-    height: 4rem;
-    display: inline-block;
-    margin: 1rem 0;
-}
-
-h3 {
-    font-size: 1.8rem;
-    text-align: center;
-    line-height: 4rem;
-    font-weight: normal;
-    margin-top: 3.5rem;
-    margin-bottom: 1.2rem;
-}
-
-.box {
-    background: #fff;
-    border-radius: 1rem;
-}
-
-.box-header span {
-    height: 2.4rem;
-    line-height: 2.4rem;
-}
-</style>

@@ -1,11 +1,9 @@
 <template>
-    <div class="app pd20">
-        <div class="box">
-            <div class="box-header clearfix tac">
-                <i src="../assets/icon_attention.png"
-                   alt=""
-                   class="img imgurl01 fl"></i>
-                <span class="fs14 tal fl">请观察前方大圆镜</br>确认车辆停在黄线内并拉手刹</span>
+    <div class="pd20 bgbai">
+        <div class="">
+            <div class="carstop-header clearfix">
+                <span class="img imgurl01"></span>
+                <span class="tal fs12">请观察前方大圆镜</br>确认车辆停在黄线内并拉手刹</span>
             </div>
             <div class="box-middle">
                 <h3 class="common-title tac">请确认以下安全事项</h3>
@@ -43,24 +41,20 @@
                 </ul>
     
             </div>
-            <div class="box-footer">
-                <h3 class="common-title tac mgtb10">洗车注意事项</h3>
-                <ul class="fs12">
+            <div class="box-footer tac pdb10">
+                <h3 class="common-title">洗车注意事项</h3>
+                <ul class="box-footer-text fs12">
                     <li>1.请将车停在黄线内，并回正方向盘，以免发生刮擦；</li>
                     <li>2.洗车期间，严禁打开车窗或车门；</li>
                     <li>3.请勿倒车进入大盒子，以免影响洗车效果；</li>
                     <li>4.洗车期间，请坐在车内或站在洗车机外；</li>
-                    <li>5.车辆尺寸：高度
-                        <2.3米，宽度<2.4米，长度<5.5米；</li>
-                            <li>6.请收好超长加装件，以免洗车时损坏；</li>
+                    <li>5.车辆尺寸：高度2.3米，宽度<2.4米，长度<5.5米；</li>
+                    <li>6.请收好超长加装件，以免洗车时损坏；</li>
                 </ul>
             </div>
         </div>
         <div class="tac mgt10">
-            <a href="javascript:void(0)"
-               class="common-btn"
-               v-bind:class="{none: btnActive}"
-               @click="isCleanCar">我已确认<span v-if="btnActive">( {{time}}s )</span></a>
+            <a href="javascript:void(0)" class="common-btn" v-bind:class="{none: btnActive}" @click="isCleanCar">我已确认<span v-if="btnActive">( {{time}}s )</span></a>
         </div>
     </div>
 </template>
@@ -163,9 +157,10 @@ export default {
     background: #fff;
 }
 
-.box-footer ul {
-    font-size: 1.2rem;
-    line-height: 2rem;
-    text-align: left;
-}
+    .box-footer-text {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        text-align: left;
+        padding-left: 1rem;
+    }
 </style>

@@ -1,19 +1,16 @@
 <template>
-    <div class="app">
-        <div class="card-detail-con">
-            <div class="bgbai pd10">
-                <div class="img imgurl06"></div>
-                <h3 class="fs18 common-title">{{cardDetailObj.title}}</h3>
-                <div>
-                    <mt-cell title="有效期" :value="cardDetailObj.outTime"></mt-cell>
+    <div class="card-detail">
+        <div class="">
+            <div class="">
+                <div class="img imgurl06 card-item-month mg0">
+                    <p class="fs24">{{cardDetailObj.name}}</p>
+                    <p class="fs14 mgt10">¥{{cardDetailObj.salePrice}}</p>
+                    <p class="fs14 mgt10">有效期{{cardDetailObj.createTimeCN}}</p>
                 </div>
-                <!-- <div>
-                    <mt-cell title="有效使用门店" :value="cardDetailObj.shopCount"></mt-cell>
-                </div> -->
             </div>
-            <div class="bgbai pd10">
+            <div class="">
                 <h3 class="fs18 common-title">会员权益</h3>
-                <div class="agreement" v-show="cardDetailType == 1">
+                <div class="agreement" v-show="cardDetailObj.type == 1">
                     <p>【全年打不样】</p>
                     <p>7x24小时营业，扫码洗车，无推销，有效期内无限次。买卡立即生效。</p>
                     <p class="mgt10">【全国通用】</p>
@@ -28,7 +25,7 @@
                     <p>4. 无法清洗敞篷车、开放空间的载货车</p>
                     <p>5. 无法清洗装有长天线的车辆</p>
                 </div>
-                <div class="agreement" v-show="cardDetailType == 2">
+                <div class="agreement" v-show="cardDetailObj.type == 2">
                     <p>【全年打不样】</p>
                     <p>7x24小时营业，扫码洗车，无推销。买卡立即生效。</p>
                     <p class="mgt10">【全国通用】</p>
@@ -42,7 +39,7 @@
                     <p>4. 无法清洗敞篷车、开放空间的载货车</p>
                     <p>5. 无法清洗装有长天线的车辆</p>
                 </div>
-                <div class="agreement" v-show="cardDetailType == 3">
+                <div class="agreement" v-show="cardDetailObj.type == 3">
                     <p>【全年打不样】</p>
                     <p>7x24小时营业，扫码洗车，无推销。</p>
                     <p class="mgt10">【全国通用】</p>
@@ -69,36 +66,39 @@
         <div class="common-footer">
             <div class="footer-num">
                 <span class="name">合计金额：</span>
-                <span class="num">{{paymentNum}}</span>
+                <span class="num">{{cardDetailObj.salePrice}}</span>
             </div>
-            <div class="footer-btn common-bg">购买</div>
+            <div class="footer-btn fs18" @click="goOrderPay">购买</div>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                cardDetailObj: {
-                    title: '极速快洗月卡',
-                    explain: '6分钟快速清洗',
-                    outTime: 30,
-                    shopCount: 20,
-                },
-                paymentNum: 0,
-                isAgreement: false, // 是否同意协议
-                cardDetailType: 1, // 卡详情类型
-            };
+export default {
+    data() {
+        return {
+            cardDetailObj: {},
+            isAgreement: false, // 是否同意协议
+        };
+    },
+    mounted: function() {
+            if (this.$route.query.urlItem) {
+                this.cardDetailObj = JSON.parse(decodeURIComponent(this.$route.query.urlItem))
+                console.log(this.cardDetailObj)
+            } 
+    },
+    methods: {
+        goXieyi: function() {
+            this.$router.push({
+                path: './agreement/Dahezifuwuxieyi',
+            })
         },
-        mounted: function () {
-        },
-        methods: {
-            goXieyi: function () {
-                this.$router.push({
-                    path: './agreement/Dahezifuwuxieyi',
-                })
-            },
+        goOrderPay: function() {
+            var urlItem = encodeURIComponent(JSON.stringify(this.cardDetailObj))
+            this.$router.push({path: '/OrderPay', query: {
+                urlItem: urlItem,
+            }})
         }
     }
+}
 </script>

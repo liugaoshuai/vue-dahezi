@@ -3,28 +3,27 @@
         <div class="box">
             <div class="box-header tac pd10">
                 <div class="box-header-btn l">
-                    <img src="../assets/icon_Customerservice.png" alt="" style="width: 2rem;" @click="call">
+                    <a href="tel:10086" class="img imgurl20"></a>
                 </div>
                 <div class="box-header-btn r fs12">
-                    <img src="../assets/icon_buycard.png" alt="" style="width: 2rem;">
+                    <a href="javascript" class="img imgurl21" @click="goPayMonthCard"></a>
                 </div>
                 <div class="img imgurl04 box-header-text fs18">
                     <span>{{time}}</span>
                 </div>
             </div>
-            <div class="box-footer tac mgt20 pdb10" v-show="time > 0">
+            <div class="box-footer tac pdb10" v-show="time > 0">
                 <h3 class="common-title">洗车注意事项</h3>
                 <ul class="box-footer-text fs12">
                     <li>1.请将车停在黄线内，并回正方向盘，以免发生刮擦；</li>
                     <li>2.洗车期间，严禁打开车窗或车门；</li>
                     <li>3.请勿倒车进入大盒子，以免影响洗车效果；</li>
                     <li>4.洗车期间，请坐在车内或站在洗车机外；</li>
-                    <li>5.车辆尺寸：高度
-                        <2.3米，宽度<2.4米，长度<5.5米；</li>
-                            <li>6.请收好超长加装件，以免洗车时损坏；</li>
+                    <li>5.车辆尺寸：高度2.3米，宽度<2.4米，长度<5.5米；</li>
+                    <li>6.请收好超长加装件，以免洗车时损坏；</li>
                 </ul>
             </div>
-            <div class="box-footer tac mgt20 pdb10" v-show="time == 0">
+            <div class="box-footer tac pdb10" v-show="time == 0">
                 <div class="pdtb20">
                     <img src="../assets/logo.png" alt="" style="width: 9.2rem;">
                 </div>
@@ -47,7 +46,6 @@
                 orderType: '', // 洗车订单
                 orderAddress: '', // 洗车地址
                 orderPayTime: '', // 订单时间
-
             };
         },
         mounted: function () {
@@ -69,13 +67,16 @@
             }, 1000)
         },
         methods: {
-            call: function () {
-                var self = this;
-                self.$mint.MessageBox.confirm('是否拨打客服热线？').then(action => {
-                    // 调用微信接口
-                    self.$axiosGet(url, params, succeed);
-                });
+            goPayMonthCard: function (){
+                this.$router.push({path: '/CardIndex'})
             },
+            // call: function () {
+            //     var self = this;
+            //     self.$mint.MessageBox.confirm('是否拨打客服热线？').then(action => {
+            //         // 调用微信接口
+            //         self.$axiosGet(url, params, succeed);
+            //     });
+            // },
             getOrderStatus: function () {
                 var self = this,
                     url = 'http://test.yixiutong.cn/cwtest/scan/washstatus.json',
