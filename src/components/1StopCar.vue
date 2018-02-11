@@ -2,16 +2,14 @@
     <div class="pd20">
         <div class="carstop-box">
             <div class="carstop-header clearfix">
-                <span class="img imgurl01"></span>
+                <img src="http://p3xltibgs.bkt.clouddn.com/icon02.png" alt="">
                 <span class="tal fs12">请观察前方大圆镜</br>确认车辆停在黄线内并拉手刹</span>
             </div>
             <div class="box-middle tac">
-                <div class="mgtb20"><img src="../assets/img_Parking.png"
-                         class="box-middle-img"
-                         style="width: 16rem;"></div>
+                <div class="mgtb20"><img src="http://p3xltibgs.bkt.clouddn.com/icon02.png"
+                         class="box-middle-img"></div>
                 <div class="mgtb20"><img src="../assets/icon_down.png"
-                         class="box-middle-img"
-                         style="width: 1.5rem;"></div>
+                         class="box-middle-img"></div>
                 <div class="mgt20"><img src="../assets/icon_Handbrake.png"
                          class="box-middle-img"
                          style="width: 4.8rem;"></div>
@@ -43,7 +41,7 @@ export default {
         // 检查客户是否存在订单
         isUserOrder: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/scan/deviceorder.json',
+                url = 'http://test.yixiutong.cn/wxcw/scan/deviceorder.json',
                 params = {
                     deviceId: 1002,
                 },
@@ -67,7 +65,7 @@ export default {
         // 检查洗车机状态是否正常
         isCarWasherNormal: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/scan/devicestatus.json',
+                url = 'http://test.yixiutong.cn/wxcw/scan/devicestatus.json',
                 params = {
                     deviceId: 1002,
                 },
@@ -83,7 +81,7 @@ export default {
         // 检查客户是否到位
         isStopRight: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/scan/carready.json',
+                url = 'http://test.yixiutong.cn/wxcw/scan/carready.json',
                 params = {
                     deviceId: 1002,
                 },
@@ -99,7 +97,7 @@ export default {
         // 查询洗车状态
         isCarStatus: function (id) {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/scan/washstatus.json',
+                url = 'http://test.yixiutong.cn/wxcw/scan/washstatus.json',
                 params = {
                     orderId: id,
                 },

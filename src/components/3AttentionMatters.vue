@@ -90,7 +90,7 @@ export default {
             var self = this;
             if (self.time == 0) {
                 self.$mint.MessageBox.confirm('是否开始洗车？').then(action => {
-                    var url = 'http://test.yixiutong.cn/cwtest/scan/docw.json',
+                    var url = 'http://test.yixiutong.cn/wxcw/scan/docw.json',
                         params = {
                             orderId: this.orderId,
                         },

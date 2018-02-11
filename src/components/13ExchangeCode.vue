@@ -21,7 +21,7 @@ export default {
         // 检查客户是否存在订单
         getExchangecCoupon: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/couponcard/exchangecoupon.json',
+                url = 'http://test.yixiutong.cn/wxcw/couponcard/exchangecoupon.json',
                 params = {
                     code: this.username,
                 },

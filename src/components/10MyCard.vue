@@ -52,7 +52,7 @@ export default {
     methods: {
         getMyOrderList: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/couponcard/usercards.json',
+                url = 'http://test.yixiutong.cn/wxcw/couponcard/usercards.json',
                 params = {
                 },
                 succeed = function (res) {
@@ -62,7 +62,7 @@ export default {
         },
         getMyCardList: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/couponcard/usercoupons.json',
+                url = 'http://test.yixiutong.cn/wxcw/couponcard/usercoupons.json',
                 params = {
                 },
                 succeed = function (res) {

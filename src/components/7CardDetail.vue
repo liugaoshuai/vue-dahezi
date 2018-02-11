@@ -94,6 +94,11 @@ export default {
             })
         },
         goOrderPay: function() {
+
+            if(this.isAgreement){
+                this.$mint.MessageBox('请同意服务协议');
+                return false;
+            }
             var urlItem = encodeURIComponent(JSON.stringify(this.cardDetailObj))
             this.$router.push({path: '/OrderPay', query: {
                 urlItem: urlItem,

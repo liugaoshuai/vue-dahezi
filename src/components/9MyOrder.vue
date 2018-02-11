@@ -67,7 +67,7 @@ export default {
     methods: {
         getMyOrderListA: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/customer/orders.json',
+                url = 'http://test.yixiutong.cn/wxcw/customer/orders.json',
                 params = {
                     orderType: 1,
                 },
@@ -103,7 +103,7 @@ export default {
         },
         getMyOrderListB: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/customer/orders.json',
+                url = 'http://test.yixiutong.cn/wxcw/customer/orders.json',
                 params = {
                     orderType: 2,
                 },
@@ -139,7 +139,7 @@ export default {
         },
         getMyOrderListC: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/customer/orders.json',
+                url = 'http://test.yixiutong.cn/wxcw/customer/orders.json',
                 params = {
                     orderType: 3,
                 },

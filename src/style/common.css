@@ -75,7 +75,7 @@ h3.common-title{
 .img{
     display: inline-block;
 }
-.imgurl01{
+/*.imgurl01{
     background: url(../assets/icon_attention.png) no-repeat center;
     background-size: 2.8rem 2.8rem;
     height: 4.8rem;
@@ -117,7 +117,7 @@ h3.common-title{
     color: #fff;
 }
 .imgurl06{
-    background: url(../assets/card&coupon.png) no-repeat center;
+    background: url(../assets/card_coupon.png) no-repeat center;
     background-size: 32rem 14rem;
     height: 14rem;
     width: 100%;
@@ -191,7 +191,7 @@ h3.common-title{
     background-size: 2.4rem 2rem;
     height: 2rem;
     width: 2.4rem;
-}
+}*/
 
 
 
@@ -300,7 +300,7 @@ h3.common-title{
 }
 .carstop-header span{
     display: inline-block; 
-    font-size: 1.2em; 
+    font-size: 1.2rem; 
     vertical-align: middle;
 }
 /*洗车支付*/
@@ -327,7 +327,7 @@ h3.common-title{
     padding: 0.5rem;
 }
 .carpay-pay{
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     float: left;
     line-height: 2.4rem;
     border-radius: 0.5rem;

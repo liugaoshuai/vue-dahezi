@@ -14,7 +14,7 @@
         methods: {
             loginFun: function () {
                 var self = this,
-                    url = 'http://test.yixiutong.cn/cwtest/ulogin.json',
+                    url = 'http://test.yixiutong.cn/wxcw/ulogin.json',
                     params = {
                         storeId: 1002,
                         mobile: 18668008363,

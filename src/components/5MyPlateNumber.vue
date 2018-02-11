@@ -47,7 +47,7 @@ export default {
         // 获取车牌
         getPlateNumber: function () {
             var self = this,
-                url = 'http://test.yixiutong.cn/cwtest/customer/listcar.json',
+                url = 'http://test.yixiutong.cn/wxcw/customer/listcar.json',
                 params = {
                 },
                 succeed = function (res) {
@@ -64,7 +64,7 @@ export default {
                 return false;
             }
             self.addCarNumber = false;
-            var url = 'http://test.yixiutong.cn/cwtest/customer/addcar.json',
+            var url = 'http://test.yixiutong.cn/wxcw/customer/addcar.json',
                 params = {
                     carNo: this.carNumber,
                 },
@@ -76,7 +76,7 @@ export default {
         delCar: function (obj) {
             var self = this;
             self.$mint.MessageBox.confirm('是否删除此条车辆信息？').then(action => {
-                var url = 'http://test.yixiutong.cn/cwtest/customer/delcar.json',
+                var url = 'http://test.yixiutong.cn/wxcw/customer/delcar.json',
                     params = {
                         carId: obj.id,
                     },

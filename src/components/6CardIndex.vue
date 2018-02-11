@@ -100,7 +100,7 @@ export default {
         },
         getCardClass: function () {
             var self = this;
-            var url = 'http://test.yixiutong.cn/cwtest/goods/getservice.json',
+            var url = 'http://test.yixiutong.cn/wxcw/goods/getservice.json',
                 params = {
                 },
                 succeed = function (res) {
@@ -115,7 +115,7 @@ export default {
         getCardList: function (id) {
             this.active = id
             var self = this;
-            var url = 'http://test.yixiutong.cn/cwtest/goods/getcards.json',
+            var url = 'http://test.yixiutong.cn/wxcw/goods/getcards.json',
                 params = {
                     serviceId: id,
                     type: 3,
@@ -125,7 +125,7 @@ export default {
                 };
             self.$axiosGet(url, params, succeed);
 
-            var url1 = 'http://test.yixiutong.cn/cwtest/goods/getcards.json',
+            var url1 = 'http://test.yixiutong.cn/wxcw/goods/getcards.json',
                 params1 = {
                     serviceId: id,
                     type: 1,
