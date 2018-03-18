@@ -1,0 +1,90 @@
+<template>
+    <div id="orderpay">
+        <div class="">
+            <mt-cell title="支付名称" :value="cardDetailObj.name"></mt-cell>
+            <mt-cell title="支付金额" :value="cardDetailObj.salePrice"></mt-cell>
+            <mt-cell title="选择车辆" :value="payCar" v-show="payCar"></mt-cell>
+        </div>
+        <div class="btn">
+            <a href="javascript:void(0)" class="common-btn" @click="payCard">微信支付</a>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    export default {
+        data() {
+            return {
+                payCar: '', // 选择车辆
+                cardDetailObj: {},
+            };
+        },
+        mounted: function () {
+            if (this.$route.query.urlItem) {
+                this.cardDetailObj = JSON.parse(decodeURIComponent(this.$route.query.urlItem))
+            }
+            if (this.$route.query.carId) {
+                this.payCar = this.$route.query.carId
+            }
+        },
+        components: {
+        },
+        methods: {
+
+            payCard: function () {
+                var self = this,
+                    url = this.$api.buycard,
+                    params = {
+                        carNo: this.payCar ? this.payCar : '',
+                        cardId: this.cardDetailObj.id,
+                    },
+                    succeed = function (res) {
+                        self.getWeiXinPay(res.data.data)
+                    };
+                self.$axiosGet(url, params, succeed);
+            },
+            // 微信支付
+            getWeiXinPay: function (data) {
+                var self = this,
+                    url = this.$api.prepayinfo,
+                    params = {
+                        payOrderId: data,
+                    },
+                    succeed = function (res) {
+                        onBridgeReady(res.data.data)
+                    };
+                self.$axiosGet(url, params, succeed);
+
+
+                function onBridgeReady(obj) {
+                    WeixinJSBridge.invoke(
+                        'getBrandWCPayRequest', {
+                            "appId": obj.appId,//公众号名称，由商户传入     
+                            "timeStamp": obj.timeStamp,//时间戳，自1970年以来的秒数     
+                            "nonceStr": obj.nonceStr,//随机串     
+                            "package": obj.package,
+                            "signType": obj.signType,//微信签名方式：     
+                            "paySign": obj.paySign //微信签名 
+                        },
+                        function (res) {
+                            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                self.$router.push({ path: '/CardIndex' })
+                            }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+                        }
+                    );
+                }
+                if (typeof WeixinJSBridge == "undefined") {
+                    if (document.addEventListener) {
+                        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                    } else if (document.attachEvent) {
+                        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                    }
+                } else {
+                    onBridgeReady();
+                }
+            },
+        }
+    }
+</script>

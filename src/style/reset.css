@@ -33,10 +33,12 @@ img { border: 0; max-width: 100%; }
 html{
     line-height: initial;
     height: 100%;
-    background: #f2f5fc;
-    font-family: "微软雅黑";
+    background: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
 }
 body{
-    font-size: 0.32rem;
+    font-size: 12px;
     height: 100%;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
 }

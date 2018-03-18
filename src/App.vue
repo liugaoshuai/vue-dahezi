@@ -4,34 +4,3 @@
     <router-view/>
 </template>
 
-<script>
-    export default {
-        data() {
-            return {
-            };
-        },
-        created: function () {
-          this.loginFun();
-        },
-        mounted: function () {
-        },
-        methods: {
-            loginFun: function () {
-                var self = this,
-                    url = 'http://192.168.0.144/wxcw/ulogin.json',
-                    params = {
-                        storeId: 1002,
-                        mobile: 18668008363,
-                    },
-                    succeed = function (res) {
-                        if(res.data.status === 0){
-                            self.$store.state.wId = res.data.data
-                        }else{
-                            self.$mint.MessageBox('提示', '登陆失败');
-                        }
-                    };
-                self.$axiosGet(url, params, succeed);
-            }
-         }
-    }
-</script>

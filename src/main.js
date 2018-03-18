@@ -8,25 +8,29 @@ import 'mint-ui/lib/style.css'
 Vue.config.productionTip = false
 
 import './style/reset.css'
-import './style/common.css'
+// import './style/common.css'
+import './style/page.css'
 
-// axios
-import axios from 'axios'
-Vue.prototype.$mint = axios
+import api from './script/api.js'
+Vue.prototype.$api = api
 
-Vue.use(MintUI)
+import Methods from './script/common.js'
+Vue.use(Methods);
 
+// vuex
 import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    wId: '',
+    pageId: '', // 
     orderId: '', // 订单id
+    jSessionId: '', 
+    deviceId: '',
   }
 })
-import Methods from './script/common.js'
-Vue.use(Methods);
 
+// mint-ui
+Vue.use(MintUI)
 import mint from 'mint-ui';
 Vue.prototype.$mint = mint
 /* eslint-disable no-new */

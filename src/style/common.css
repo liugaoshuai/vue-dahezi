@@ -123,13 +123,13 @@ h3.common-title{
     width: 100%;
 }
 .imgurl07{
-    background: url(../assets/icon_buycard_selected.png) no-repeat center;
+    background: url(../assets/icon_cardactive.png) no-repeat center;
     background-size: 4rem 4rem;
     height: 4rem;
     width: 100%;
 }
 .imgurl08{
-    background: url(../assets/icon_my_selected.png) no-repeat center;
+    background: url(../assets/icon_wodeactive.png) no-repeat center;
     background-size: 4rem 4rem;
     height: 4rem;
     width: 100%;
