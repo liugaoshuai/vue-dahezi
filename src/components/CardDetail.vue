@@ -140,6 +140,7 @@
                         res.data.data.forEach(item => {
                             self.carList.push(item.carNo)
                         })
+                        self.storeId = self.carList[0];
                     };
                 self.$axiosGet(url, params, succeed);
             },

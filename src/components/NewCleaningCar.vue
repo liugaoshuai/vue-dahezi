@@ -59,7 +59,7 @@
       return {
         deviceId: null,
 
-        cleanCarTime: 0, // 倒计时
+        cleanCarTime: 1, // 倒计时
         cleanCarTimeText: '', // 倒计时
 
 
@@ -99,13 +99,12 @@
               self.payAmount = res.data.data.order.payAmount;
               self.payTypeText = res.data.data.order.payTypeCN;
             } else if (es.data.data.washStatus == 1) {
-              self.avtivePage = 4;
               self.cleanCarTime = res.data.data.leftTime;
               var int = setInterval(function () {
                 self.cleanCarTimeText = self.$formatTime(self.cleanCarTime)
                 self.$set([self.cleanCarTimeText], 'cleanCarTimeText', self.cleanCarTimeText)
                 if (self.cleanCarTime % 5 == 0) {
-                  self.getOrderStatus();
+                  self.getCleanCarStatus();
                 }
                 if (self.cleanCarTime == 0) {
                   clearInterval(int)

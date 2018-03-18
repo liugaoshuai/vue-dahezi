@@ -8,32 +8,34 @@ let getQueryString = function (key, href) {
 };
 
 // 储存根据二维码获取信息的fun
-let getLogin = function () {
-  let url = window.location.href;
-  let jSessionId = getQueryString('jSessionId', url);
-  let deviceId = getQueryString('deviceId', url);
+let getLogin = function (that) {
+  if (!that.$store.state.jSessionId) {
+    let url = window.location.href;
+    let jSessionId = getQueryString('jSessionId', url);
+    let deviceId = getQueryString('deviceId', url);
 
-  that.$store.state.jSessionId = jSessionId;
-  that.$store.state.deviceId = deviceId;
+    that.$store.state.jSessionId = jSessionId;
+    that.$store.state.deviceId = deviceId;
+  }
 }
 
 let getLoginTest = function (that) {
-    var self = that,
-      url = 'http://test.yixiutong.cn/wxcw/ulogin.json',
-      params = {
-        storeId: 1004,
-        mobile: 18668008363,
-      },
-      succeed = function (res) {
-        if (res.data.status == 0) {
-          self.$store.state.jSessionId = res.data.data;
-          self.$store.state.deviceId = 1002;
-          self.deviceId = 1002;
-        } else {
-          self.$mint.MessageBox(res.data.message);
-        }
-      };
-    self.$axiosGet(url, params, succeed);
+  var self = that,
+    url = 'http://test.yixiutong.cn/wxcw/ulogin.json',
+    params = {
+      storeId: 1004,
+      mobile: 18668008363,
+    },
+    succeed = function (res) {
+      if (res.data.status == 0) {
+        self.$store.state.jSessionId = res.data.data;
+        self.$store.state.deviceId = 1002;
+        self.deviceId = 1002;
+      } else {
+        self.$mint.MessageBox(res.data.message);
+      }
+    };
+  self.$axiosGet(url, params, succeed);
 }
 
 
