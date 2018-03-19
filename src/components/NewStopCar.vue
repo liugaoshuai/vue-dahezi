@@ -27,27 +27,19 @@
 </template>
 
 <script>
-  import Util from '../script/util';
+  import Util from '../script/util.js';
 
 
   export default {
     data() {
       return {
         isCleanCar: true, // 是否可以洗车
-        deviceId: null,
       };
     },
     watch: {
-      deviceId(v) {
-        if (v) {
-          Util.isUserOrder(this);
-          Util.isCarWasherNormal(this);
-          Util.isStopRight(this);
-        }
-      }
     },
     mounted: function () {
-      Util.getLogin(this);
+      Util.getLoginTest(this);
     },
     methods: {
 

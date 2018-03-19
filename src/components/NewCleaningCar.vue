@@ -12,7 +12,7 @@
         <div class="status">
           <span class="status-a">
             <span class="status-b">
-              <span class="fs14 status-c" v-if="cleanCarTimeText">时间剩余</br>{{cleanCarTimeText}}</span>
+              <span class="fs14 status-c" v-if="cleanCarTime">时间剩余</br>{{cleanCarTimeText}}</span>
               <span class="fs14 status-c carcleaned" v-else>洗车已完成</span>
             </span>
           </span>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-  import Util from '../script/util';
+  import Util from '../script/util.js';
 
 
   export default {
@@ -74,23 +74,24 @@
       
     },
     mounted: function () {
-      Util.isCarWasherNormal(this);
-          Util.isStopRight(this);
       this.getCleanCarStatus();
     },
     methods: {
       // 获取洗车状态
       getCleanCarStatus: function () {
-        if(!this.$store.state.orderId){
+          let orderId = JSON.parse(localStorage.getItem('orderId'));
+
+        if(!orderId){
           this.$mint.MessageBox('订单不存在');
         }
         var self = this,
           url = this.$api.washstatus,
           params = {
-            orderId: self.$store.state.orderId,
+            orderId: orderId,
           },
           succeed = function (res) {
             if (res.data.data.washStatus == 2) {
+              clearInterval(int)
               self.cleanCarTime = 0;
               self.cleanCarTimeText = "";
               self.orderType = res.data.data.order.itemName;
@@ -98,12 +99,12 @@
               self.orderPayTime = res.data.data.order.payTimeCNDT;
               self.payAmount = res.data.data.order.payAmount;
               self.payTypeText = res.data.data.order.payTypeCN;
-            } else if (es.data.data.washStatus == 1) {
+            } else if (res.data.data.washStatus == 1) {
               self.cleanCarTime = res.data.data.leftTime;
               var int = setInterval(function () {
                 self.cleanCarTimeText = self.$formatTime(self.cleanCarTime)
-                self.$set([self.cleanCarTimeText], 'cleanCarTimeText', self.cleanCarTimeText)
                 if (self.cleanCarTime % 5 == 0) {
+                  clearInterval(int)
                   self.getCleanCarStatus();
                 }
                 if (self.cleanCarTime == 0) {
@@ -112,7 +113,7 @@
                 self.cleanCarTime--;
               }, 1000)
               int();
-            } else if (es.data.data.washStatus == 3) {
+            } else if (res.data.data.washStatus == 3) {
               self.$mint.MessageBox('洗车机故障');
             }
           };
