@@ -66,8 +66,8 @@
         },
         methods: {
             goCleanCar: function (id) {
-                this.$store.state.orderId = id;
-                this.$goRouter('./CleanCar');
+                localStorage.setItem('orderId', JSON.stringify(id));
+                this.$goRouter('./NewIsStopCar');
             },
             getMyOrderListA: function () {
                 var self = this,

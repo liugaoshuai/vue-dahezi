@@ -87,10 +87,11 @@
 
       // 洗车机可用项目
       getCarClass: function () {
+          let deviceId = JSON.parse(localStorage.getItem('deviceId'));
         var self = this,
           url = this.$api.deviceservice,
           params = {
-            deviceId: self.$store.state.deviceId,
+            deviceId: deviceId,
           },
           succeed = function (res) {
             self.cardClassList = res.data.data;
@@ -145,6 +146,8 @@
       },
       // 支付 
       getPay: function () {
+          let deviceId = JSON.parse(localStorage.getItem('deviceId'));
+        
         // 1用劵2用卡4微信
 
         // 31卡 4微信 2用劵
@@ -168,13 +171,13 @@
           url = this.$api.cwpay,
           params = {
             serviceId: this.cardClassActvie,
-            deviceId: self.$store.state.deviceId,
+            deviceId: deviceId,
             payType: type,
             couponId: type == 1 ? this.payClassActvie : '',
             cardId: type == 2 ? this.payClassActvie : '',
           },
           succeed = function (res) {
-            self.$store.state.orderId = res.data.data.orderId;
+                            localStorage.setItem('orderId', JSON.stringify(res.data.data.orderId));
             if (self.payType != 4) {
               self.$goRouter('./NewIsStopCar')
             } else {

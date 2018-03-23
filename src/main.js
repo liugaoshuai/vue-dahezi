@@ -17,17 +17,6 @@ Vue.prototype.$api = api
 import Methods from './script/common.js'
 Vue.use(Methods);
 
-// vuex
-import Vuex from 'vuex'
-Vue.use(Vuex)
-const store = new Vuex.Store({
-  state: {
-    pageId: '', // 
-    orderId: '', // 订单id
-    jSessionId: '', 
-    deviceId: '',
-  }
-})
 
 // mint-ui
 Vue.use(MintUI)
@@ -37,7 +26,6 @@ Vue.prototype.$mint = mint
 new Vue({
   el: '#app',
   router,
-  store,
   components: { App },
   template: '<App/>'
 })

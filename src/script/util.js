@@ -1,23 +1,34 @@
 
 
-// 获取url里面指定值
 let getQueryString = function (key, href) {
   href = href || window.location.search;
   var match = href.match(new RegExp('[?&]' + key + '=([^&]*)'));
   return match && match[1] && decodeURIComponent(match[1]) || '';
-};
+}
 
-// 储存根据二维码获取信息的fun
 let getLogin = function (that) {
-  if (!that.$store.state.jSessionId) {
-    let url = window.location.href;
-    let jSessionId = getQueryString('jSessionId', url);
-    let deviceId = getQueryString('deviceId', url);
-
-    that.$store.state.jSessionId = jSessionId;
-    that.$store.state.deviceId = deviceId;
+  let url = window.location.href;
+  let jSessionId = getQueryString('jSessionId', url);
+  let deviceId = getQueryString('deviceId', url);
+  if(deviceId){
+    localStorage.setItem('deviceId', JSON.stringify(deviceId));
+  }
+  if(jSessionId){
+    localStorage.setItem('jSessionId', JSON.stringify(jSessionId));
   }
 }
+// // 获取code
+// const wxLogin =  () => {
+//   return new Promise((resolve, reject) => {
+//     wx.login({
+//       success: function (res) {
+//         resolve(res)
+//       }
+//     });
+//   });
+// };
+
+
 
 let getLoginTest = function (that) {
   var self = that,
@@ -28,11 +39,8 @@ let getLoginTest = function (that) {
     },
     succeed = function (res) {
       if (res.data.status == 0) {
-        self.$store.state.jSessionId = res.data.data;
-        self.$store.state.deviceId = 1002;
-        self.deviceId = 1002;
-      } else {
-        self.$mint.MessageBox(res.data.message);
+        localStorage.setItem('jSessionId', JSON.stringify(res.data.data));
+        localStorage.setItem('deviceId', JSON.stringify(1002));
       }
     };
   self.$axiosGet(url, params, succeed);
@@ -40,18 +48,18 @@ let getLoginTest = function (that) {
 
 
 // 检查客户是否存在订单
-let isUserOrder = function (that) {
+function isUserOrder(that) {
+  let deviceId = JSON.parse(localStorage.getItem('deviceId'));
   var self = that,
     url = self.$api.deviceorder,
     params = {
-      deviceId: self.$store.state.deviceId,
+      deviceId: deviceId,
     },
     succeed = function (res) {
-      console.log('订单已支付，是否继续洗车？')
       // 正在洗车
       if (res.data.data.workingOrderId > 0) {
         self.$mint.MessageBox.confirm('存在正在洗车的订单，是否继续洗车？').then(action => {
-          self.$store.state.orderId = res.data.data.workingOrderId;
+          localStorage.setItem('orderId', JSON.stringify(res.data.data.workingOrderId));
           self.$router.push({
             path: '/NewCleaningCar'
           })
@@ -60,7 +68,7 @@ let isUserOrder = function (that) {
       }
       if (res.data.data.pendingOrderId > 0) {
         self.$mint.MessageBox.confirm('订单已支付，是否继续洗车？').then(action => {
-          self.$store.state.orderId = res.data.data.pendingOrderId;
+          localStorage.setItem('orderId', JSON.stringify(res.data.data.pendingOrderId));
           self.$router.push({
             path: '/NewIsStopCar'
           })
@@ -72,11 +80,13 @@ let isUserOrder = function (that) {
 }
 
 // 检查洗车机状态是否正常
-let isCarWasherNormal = function (that) {
+function isCarWasherNormal(that) {
+  let deviceId = JSON.parse(localStorage.getItem('deviceId'));
+
   var self = that,
     url = that.$api.devicestatus,
     params = {
-      deviceId: that.$store.state.deviceId,
+      deviceId: deviceId,
     },
     succeed = function (res) {
       if (res.data.data.isFree != 1) {
@@ -88,11 +98,13 @@ let isCarWasherNormal = function (that) {
 }
 
 // 检查车辆是否停好
-let isStopRight = function (that) {
+function isStopRight(that) {
+  let deviceId = JSON.parse(localStorage.getItem('deviceId'));
+
   var self = that,
     url = that.$api.carready,
     params = {
-      deviceId: that.$store.state.deviceId,
+      deviceId: deviceId,
     },
     succeed = function (res) {
       if (res.data.data != 1) {
@@ -103,11 +115,8 @@ let isStopRight = function (that) {
   self.$axiosGet(url, params, succeed);
 }
 
-module.exports = {
+export default {
   getQueryString,
   getLogin,
   getLoginTest,
-  isUserOrder,
-  isCarWasherNormal,
-  isStopRight
 }

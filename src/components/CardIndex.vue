@@ -47,6 +47,8 @@
 </template>
 
 <script>
+  import Util from '../script/util.js';
+
     export default {
         data() {
             return {
@@ -69,6 +71,7 @@
         },
         mounted: function () {
             this.getCardClass();
+            Util.getLogin(this);
         },
         methods: {
             goMyIndex: function () {

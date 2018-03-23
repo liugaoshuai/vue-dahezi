@@ -58,27 +58,20 @@
 </template>
 
 <script>
-  import Util from '../script/util';
+  import Util from '../script/util.js';
 
 
   export default {
     data() {
       return {
-        deviceId: null,
         time: 3,
         btnActive: true,
       };
     },
     watch: {
-      deviceId(v) {
-        if (v) {
-          
-        }
-      }
+      
     },
     mounted: function () {
-      Util.isCarWasherNormal(this);
-          Util.isStopRight(this);
       this.timeOut();
     },
     methods: {
@@ -105,14 +98,15 @@
         if (this.btnActive) {
           return false;
         }
-        if (!this.$store.state.orderId) {
+        let orderId = JSON.parse(localStorage.getItem('orderId'));
+        if (!orderId) {
           this.$mint.MessageBox('订单不存在');
         }
         var self = this;
         this.$mint.MessageBox.confirm('是否开始洗车？').then(action => {
           var url = this.$api.docw,
             params = {
-              orderId: self.$store.state.orderId,
+              orderId: orderId,
             },
             succeed = function (res) {
               self.$goRouter('./NewCleaningCar')

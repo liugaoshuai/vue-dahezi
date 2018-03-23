@@ -63,6 +63,8 @@
 </template>
 
 <script>
+  import Util from '../script/util.js';
+
     export default {
         data() {
             return {
@@ -72,6 +74,7 @@
             };
         },
         mounted: function () {
+            Util.getLogin(this);
             this.getUserMsg();
             this.getUserinfo();
         },

@@ -65,7 +65,6 @@
           succeed = function (res) {
             if (res.data.status == 0) {
               self.btnActive = true;
-
               self.timeOut();
             }
           };
@@ -81,6 +80,10 @@
             smsCode: this.ruleValue,
           },
           succeed = function (res) {
+            if(res.data.status == 0){
+              self.$mint.MessageBox('手机绑定成功');
+              self.$router.push({ path: '/MyIndex' })
+            }
           };
         self.$axiosGet(url, params, succeed);
       },

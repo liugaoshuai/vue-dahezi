@@ -9,6 +9,8 @@
 </template>
 
 <script>
+  import Util from '../script/util.js';
+
     export default {
         data() {
             return {
@@ -16,6 +18,7 @@
             };
         },
         mounted: function () {
+            Util.getLogin(this);
         },
         methods: {
             // 检查客户是否存在订单
