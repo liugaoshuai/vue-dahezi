@@ -40,7 +40,7 @@
     watch: {
     },
     mounted: function () {
-      Util.getLoginTest(this);
+      Util.getLogin(this);
       this.isCarWasherNormal();
     },
     methods: {
