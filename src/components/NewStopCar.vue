@@ -20,7 +20,7 @@
       </div>
       <div class="tac">
         <a href="#" class="common-btn" v-show="isCleanCar" @click="stopCarOk">我已拉手刹</a>
-        <a href="#" class="common-btn none" v-show="!isCleanCar">车辆尚未停车到位</a>
+        <a href="#" class="common-btn none" v-show="!isCleanCar" v-text="btnText"></a>
       </div>
     </div>
   </div>
@@ -34,6 +34,7 @@
     data() {
       return {
         isCleanCar: false, // 是否可以洗车
+        btnText: '车辆尚未停车到位',
       };
     },
     watch: {
@@ -89,6 +90,7 @@
           succeed = function (res) {
             if (res.data.data.isFree == 0) {
               self.$mint.MessageBox('洗车机运行中');
+              self.btnText = "洗车机运行中";
               return false;
             }
             self.isStopRight()

@@ -28,9 +28,13 @@
         ruleValue: '',
         time: 60,
         btnActive: false,
+        cardDetailObj: {},
       };
     },
     mounted: function () {
+      if (this.$route.query.urlItem) {
+        this.cardDetailObj = JSON.parse(decodeURIComponent(this.$route.query.urlItem))
+      }
     },
     components: {
     },
@@ -80,9 +84,20 @@
             smsCode: this.ruleValue,
           },
           succeed = function (res) {
-            if(res.data.status == 0){
+            if (res.data.status == 0) {
               self.$mint.MessageBox('手机绑定成功');
-              self.$router.push({ path: '/MyIndex' })
+              if (self.cardDetailObj) {
+                self.$router.push({
+                  path: '/MyIndex'
+                })
+              } else {
+                var urlItem = encodeURIComponent(JSON.stringify(self.cardDetailObj))
+                self.$router.push({
+                  path: '/CardDetail', query: {
+                    urlItem: urlItem,
+                  }
+                })
+              }
             }
           };
         self.$axiosGet(url, params, succeed);

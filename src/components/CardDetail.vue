@@ -68,7 +68,7 @@
                 <span class="">合计金额：</span>
                 <span class="num">{{cardDetailObj.salePrice}}</span>
             </div>
-            <div class="btn fs18" @click="goOrderPay">购买</div>
+            <div class="btn fs18" @click="getUserinfo">购买</div>
         </div>
 
         <div id="mycar" v-show="myCarShow">
@@ -76,7 +76,7 @@
             </mt-radio>
             <div class="tac mgt10">
                 <a href="#" class="common-btn" @click="goPay" v-if="carList.length > 0">继续支付</a>
-                <a href="#" class="common-btn" @click="goCarNumber" v-else>购买月卡请先绑定车辆</a>
+                <a href="#" class="common-btn" @click="goOrderPay" v-else>购买月卡请先绑定车辆</a>
             </div>
         </div>
     </div>
@@ -91,6 +91,7 @@
                 carList: [],
                 myCarShow: false,
                 storeId: '',
+                phone: '',
             };
         },
         mounted: function () {
@@ -99,8 +100,20 @@
                 console.log(this.cardDetailObj)
             }
             this.getMyCar();
+            this.getUserinfo();
         },
         methods: {
+            getUserinfo: function () {
+                var self = this,
+                    url = this.$api.userinfo,
+                    params = {},
+                    succeed = function (res) {
+                        if (res.data.status == 0) {
+                            self.phone = res.data.data.user.mobile
+                        }
+                    };
+                self.$axiosGet(url, params, succeed);
+            },
 
             goXieyi: function () {
                 this.$router.push({
@@ -117,8 +130,19 @@
                     this.$mint.MessageBox('请同意服务协议');
                     return false;
                 }
-
                 var urlItem = encodeURIComponent(JSON.stringify(this.cardDetailObj))
+                
+                if (!this.phone) {
+                    this.$mint.MessageBox.confirm('购买会员卡请点击确定跳转绑定手机').then(action => {
+                        this.$router.push({
+                            path: '/MyPhone',
+                            query: {
+                                urlItem: urlItem,
+                            }
+                        })
+                    });
+                    return false;
+                }
                 if (this.cardDetailObj.type == 1) {
                     this.myCarShow = true;
                 } else {
