@@ -68,7 +68,7 @@
                 <span class="">合计金额：</span>
                 <span class="num">{{cardDetailObj.salePrice}}</span>
             </div>
-            <div class="btn fs18" @click="getUserinfo">购买</div>
+            <div class="btn fs18" @click="goOrderPay">购买</div>
         </div>
 
         <div id="mycar" v-show="myCarShow">
@@ -76,7 +76,7 @@
             </mt-radio>
             <div class="tac mgt10">
                 <a href="#" class="common-btn" @click="goPay" v-if="carList.length > 0">继续支付</a>
-                <a href="#" class="common-btn" @click="goOrderPay" v-else>购买月卡请先绑定车辆</a>
+                <a href="#" class="common-btn" @click="goCarNumber" v-else>购买月卡请先绑定车辆</a>
             </div>
         </div>
     </div>
