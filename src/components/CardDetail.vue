@@ -109,7 +109,7 @@
                     params = {},
                     succeed = function (res) {
                         if (res.data.status == 0) {
-                            self.phone = res.data.data.user.mobile
+                            self.phone = res.data.data.user.mobile?res.data.data.user.mobile: '';
                         }
                     };
                 self.$axiosGet(url, params, succeed);

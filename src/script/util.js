@@ -35,7 +35,7 @@ let getLoginTest = function (that) {
     url = 'http://test.yixiutong.cn/wxcw/ulogin.json',
     params = {
       storeId: 1004,
-      mobile: 18668008363,
+      mobile: 15867112230,
     },
     succeed = function (res) {
       if (res.data.status == 0) {
