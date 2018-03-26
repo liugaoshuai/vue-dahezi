@@ -4,7 +4,7 @@
       <div class="header-bg">
         <div class="header-img">
           <img :src="wechatHeaderImge" alt="" v-if="wechatHeaderImge">
-          <img src="http://p3xltibgs.bkt.clouddn.com/img_Head portrait.png" alt="" v-else>
+          <img src="http://p3xltibgs.bkt.clouddn.com/img_Headportrait.png" alt="" v-else>
         </div>
         <span>{{wechatName}}</span>
       </div>
@@ -92,7 +92,7 @@
       },
       getUserMsg: function () {
         var self = this,
-          url = 'http://test.yixiutong.cn/wxcw/customer/info.json',
+          url = 'https://test.yixiutong.cn/wxcw/customer/info.json',
           params = {},
           succeed = function (res) {
             self.wechatHeaderImge = res.data.data.headImgUrl;

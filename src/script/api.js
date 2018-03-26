@@ -1,4 +1,4 @@
-var url = 'http://test.yixiutong.cn/wxcw/';
+var url = 'https://test.yixiutong.cn/wxcw/';
 
 exports.devicestatus = url + 'scan/devicestatus.json'; // 1.1洗车机状态查询
 exports.deviceorder = url + 'scan/deviceorder.json'; // 1.2获取当前客户洗车状态

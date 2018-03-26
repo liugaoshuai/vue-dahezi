@@ -671,6 +671,9 @@
 .img-icon_wechat{
   height: 1.6rem;
 }
+.img-queshen{
+  height: 15rem;
+}
 .img-rightmyicon{
   float: right;
   vertical-align: middle;
@@ -873,3 +876,12 @@
   color: #fff;
 }
 
+
+.common-queshen{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  padding: 2rem;
+  line-height: 2rem;
+}

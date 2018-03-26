@@ -20,7 +20,7 @@
             <p class="fs12" v-text="payClassWechat.typeCN"></p>
             <p class="fs16 ovhd fwb" v-text="payClassWechat.name"></p>
             <div>
-              <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay 2.png" alt="" class="img-icon_quick">
+              <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay2.png" alt="" class="img-icon_quick">
             </div>
             <div class="card-wechat">
               <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay.png" alt="" class="img-icon_wechat">
@@ -47,7 +47,7 @@
         </div>
         <div class="common-btn" @click="getPay">确认下单</div>
         <div class="fs12 mgt10">
-          <span class="yellow" @click="$goRouter('./CardIndex')">购买月卡</span>洗车无限次</div>
+          <span class="yellow" @click="$goRouter('./CardIndex')">购买年卡</span>洗车无限次</div>
       </div>
     </div>
 </template>

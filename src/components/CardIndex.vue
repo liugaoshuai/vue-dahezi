@@ -2,7 +2,7 @@
     <div class="">
         <div id="cardindex">
             <div class="card-cleantype">
-                <a href="javascript:void(0)" class="fs14" @click="getCardList(item.id)" v-for="(item,index) in cardClassArr" :class="{active: active == item.id,first: index == 0,last: index == cardClassArr.length-1}">{{item.name}}</a>
+                <a href="javascript:void(0)" class="fs14" @click="getCardList(item.id,item.name)" v-for="(item,index) in cardClassArr" :class="{active: active == item.id,first: index == 0,last: index == cardClassArr.length-1}">{{item.name}}</a>
             </div>
             <div v-show="cardArrTest.length>0" class="clearfix">
                 <h3 class="common-title">请选择次卡</h3>
@@ -15,14 +15,14 @@
                 </div>
             </div>
             <div v-show="cardMonthArrTest.length>0">
-                <h3 class="common-title">请选择月卡</h3>
+                <h3 class="common-title">请选择年卡</h3>
                 <div class="card-item-month" v-for="(item,index) in cardMonthArrTest" :key="item.id" @click="goDetail(item)">
                     <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="item-bg">
                     <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img-logo_small item-logo">
                     <p class="item-name">{{item.serviceName}}</p>
                     <p class="item-price">
                         <span class="fs14">¥</span>{{item.salePrice}}</p>
-                    <p class="item-date">有效期：30天 不限次数</p>
+                    <p class="item-date">有效期：365天 不限次数</p>
                 </div>
             </div>
         </div>
@@ -52,18 +52,13 @@
     export default {
         data() {
             return {
-                cardDetailObj: {
-                    title: '极速快洗月卡',
-                    explain: '6分钟快速清洗',
-                    outTime: 30,
-                    shopCount: 20,
-                },
+                cardDetailObj: {},
                 paymentNum: 290,
                 cardClassArr: [],
                 cardArr: [],
 
                 cardArrTest: [], // 次卡
-                cardMonthArrTest: [], // 月卡
+                cardMonthArrTest: [], // 年卡
                 active: '',
 
 
@@ -102,7 +97,11 @@
                     };
                 self.$axiosGet(url, params, succeed);
             },
-            getCardList: function (id) {
+            getCardList: function (id,name) {
+                if(name == "打蜡洗车"){
+                    this.$mint.MessageBox('洗车机运行中');
+                    return false;
+                }
                 this.active = id
                 var self = this;
                 var url = this.$api.getcards,
@@ -118,7 +117,7 @@
                 var url1 = this.$api.getcards,
                     params1 = {
                         serviceId: id,
-                        type: 1,
+                        type: 2,
                     },
                     succeed1 = function (res) {
                         self.cardMonthArrTest = res.data.data;

@@ -9,7 +9,7 @@
         <!-- tab-container -->
         <mt-tab-container v-model="orderType">
             <mt-tab-container-item id="1">
-                <div v-for="item in orderListA" :key="item.id" class="order-item">
+                <div v-for="item in orderListA" :key="item.id" class="order-item" v-if="orderListA.length > 0">
                     <p class="fs12">订单编号：{{item.orderNo}}</p>
                     <p class="fs18">{{item.itemName}}</p>
                     <p class="fs18">{{item.payTypeName}}</p>
@@ -19,9 +19,13 @@
                     <p class="fs18 order-pay">¥{{item.salePrice}}</p>
                     <a class="common-btn" v-if="item.status == 0" @click="goCleanCar(item.id)">继续洗车</a>
                 </div>
+                <div v-else class="common-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <p>没有洗车订单</p>
+            </div>
             </mt-tab-container-item>
             <mt-tab-container-item id="2">
-                <div v-for="item in orderListB" :key="item.id" class="order-item">
+                <div v-for="item in orderListB" :key="item.id" class="order-item" v-if="orderListB.length > 0">
                     <p class="fs12">订单编号：{{item.orderNo}}</p>
                     <p class="fs18">{{item.itemName}}</p>
                     <p class="fs18">{{item.payTypeName}}</p>
@@ -30,9 +34,13 @@
                     <p class="fs12 order-status">{{item.statusName}}</p>
                     <p class="fs18 order-pay">¥{{item.salePrice}}</p>
                 </div>
+                <div v-else class="common-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <p>没有会员卡订单</p>
+            </div>
             </mt-tab-container-item>
             <mt-tab-container-item id="3">
-                <div v-for="item in orderListC" :key="item.id" class="order-item">
+                <div v-for="item in orderListC" :key="item.id" class="order-item" v-if="orderListC.length > 0">
                     <p class="fs12">订单编号：{{item.orderNo}}</p>
                     <p class="fs18">{{item.itemName}}</p>
                     <p class="fs18">{{item.payTypeName}}</p>
@@ -41,6 +49,10 @@
                     <p class="fs12 order-status">{{item.statusName}}</p>
                     <p class="fs18 order-pay">¥{{item.salePrice}}</p>
                 </div>
+                <div v-else class="common-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <p>没有已取消订单</p>
+            </div>
             </mt-tab-container-item>
         </mt-tab-container>
     </div>
@@ -83,6 +95,9 @@
                             if (item.payType == 2) {
                                 item['payTypeName'] = '月卡';
                             }
+                            if (item.payType == 3) {
+                                item['payTypeName'] = '年卡';
+                            }
                             if (item.payType == 4) {
                                 item['payTypeName'] = '微信';
                             }
@@ -117,7 +132,10 @@
                                 item['payTypeName'] = '优惠劵';
                             }
                             if (item.payType == 2) {
-                                item['payTypeName'] = '用卡';
+                                item['payTypeName'] = '月卡';
+                            }
+                            if (item.payType == 3) {
+                                item['payTypeName'] = '年卡';
                             }
                             if (item.payType == 4) {
                                 item['payTypeName'] = '微信';
@@ -154,7 +172,10 @@
                                 item['payTypeName'] = '优惠劵';
                             }
                             if (item.payType == 2) {
-                                item['payTypeName'] = '用卡';
+                                item['payTypeName'] = '月卡';
+                            }
+                            if (item.payType == 3) {
+                                item['payTypeName'] = '年卡';
                             }
                             if (item.payType == 4) {
                                 item['payTypeName'] = '微信';

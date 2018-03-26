@@ -1,8 +1,13 @@
 <template>
     <div id="carnumber">
+        
         <div class="mgb20 bgbai">
-            <div v-for="(item,index) in carArr" :key="item.carNo" @click="delCar(item)">
+            <div v-for="(item,index) in carArr" :key="item.carNo" @click="delCar(item)" v-if="carArr.length > 0">
                 <mt-cell title="车牌号" :value="item.carNo"></mt-cell>
+            </div>
+            <div v-else class="common-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <p>您还没有车辆信息</p>
             </div>
             <div class="carNumber">
                 <mt-field label="新增车牌号" placeholder="点击输入车牌号" v-model="carNumber" v-show="addCarNumber"></mt-field>
@@ -44,7 +49,7 @@
             // 获取车牌
             getPlateNumber: function () {
                 var self = this,
-                    url = 'http://test.yixiutong.cn/wxcw/customer/listcar.json',
+                    url = 'https://test.yixiutong.cn/wxcw/customer/listcar.json',
                     params = {
                     },
                     succeed = function (res) {
@@ -66,7 +71,7 @@
                     return false;
                 }
                 self.addCarNumber = false;
-                var url = 'http://test.yixiutong.cn/wxcw/customer/addcar.json',
+                var url = 'https://test.yixiutong.cn/wxcw/customer/addcar.json',
                     params = {
                         carNo: num,
                     },
@@ -79,7 +84,7 @@
                 console.log(obj)
                 var self = this;
                 self.$mint.MessageBox.confirm('是否删除此条车辆信息？').then(action => {
-                    var url = 'http://test.yixiutong.cn/wxcw/customer/delcar.json',
+                    var url = 'https://test.yixiutong.cn/wxcw/customer/delcar.json',
                         params = {
                             carId: obj.id,
                         },
