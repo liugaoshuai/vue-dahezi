@@ -2,10 +2,10 @@
     <div id="carnumber">
         
         <div class="mgb20 bgbai">
-            <div v-for="(item,index) in carArr" :key="item.carNo" @click="delCar(item)" v-if="carArr.length > 0">
+            <div v-for="(item,index) in carArr" :key="item.carNo" @click="delCar(item)" v-show="carArr.length > 0">
                 <mt-cell title="车牌号" :value="item.carNo"></mt-cell>
             </div>
-            <div v-else class="common-queshen">
+            <div v-show="carArr.length == 0" class="common-queshen">
                 <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
                 <p>您还没有车辆信息</p>
             </div>

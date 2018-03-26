@@ -19,8 +19,8 @@
                     <p class="fs18 order-pay">¥{{item.salePrice}}</p>
                     <a class="common-btn" v-if="item.status == 0" @click="goCleanCar(item.id)">继续洗车</a>
                 </div>
-                <div v-else class="common-queshen">
-                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <div  v-if="orderListA.length == 0" class="common-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_noorder.png" alt="" class="img-queshen">
                 <p>没有洗车订单</p>
             </div>
             </mt-tab-container-item>
@@ -34,8 +34,8 @@
                     <p class="fs12 order-status">{{item.statusName}}</p>
                     <p class="fs18 order-pay">¥{{item.salePrice}}</p>
                 </div>
-                <div v-else class="common-queshen">
-                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <div  v-if="orderListB.length == 0" class="common-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_noorder.png" alt="" class="img-queshen">
                 <p>没有会员卡订单</p>
             </div>
             </mt-tab-container-item>
@@ -49,8 +49,8 @@
                     <p class="fs12 order-status">{{item.statusName}}</p>
                     <p class="fs18 order-pay">¥{{item.salePrice}}</p>
                 </div>
-                <div v-else class="common-queshen">
-                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <div  v-if="orderListC.length == 0"  class="common-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_noorder.png" alt="" class="img-queshen">
                 <p>没有已取消订单</p>
             </div>
             </mt-tab-container-item>
