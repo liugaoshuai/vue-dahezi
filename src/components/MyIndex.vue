@@ -92,7 +92,7 @@
       },
       getUserMsg: function () {
         var self = this,
-          url = 'https://test.yixiutong.cn/wxcw/customer/info.json',
+          url = 'http://test.yixiutong.cn/wxcw/customer/info.json',
           params = {},
           succeed = function (res) {
             self.wechatHeaderImge = res.data.data.headImgUrl;

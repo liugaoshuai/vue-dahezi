@@ -32,7 +32,7 @@ let getLogin = function (that) {
 
 let getLoginTest = function (that) {
   var self = that,
-    url = 'https://test.yixiutong.cn/wxcw/ulogin.json',
+    url = 'http://test.yixiutong.cn/wxcw/ulogin.json',
     params = {
       storeId: 1004,
       mobile: 18668008363,
