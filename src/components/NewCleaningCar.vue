@@ -3,7 +3,7 @@
     <div class="box">
       <div class="header clearfix mgb20">
         <a href="tel:13777864743">
-          <img src="http://p3xltibgs.bkt.clouddn.com/icon_customerservice.png" alt="" class="left">
+          <img src="http://p3xltibgs.bkt.clouddn.com/icon_Customerservice.png" alt="" class="left">
         </a>
         <div class="right" @click="$goRouter('./CardIndex')">
           <img src="http://p3xltibgs.bkt.clouddn.com/icon_buycard.png" alt="">

@@ -38,7 +38,7 @@
         <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
       </div>
       <a class="content-item" href="tel:13777864743">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_customerservice.png" alt="" class="img-myicon">
+        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Customerservice.png" alt="" class="img-myicon">
         <span class="fs12">我的客服</span>
         <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
       </a>

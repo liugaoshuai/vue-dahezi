@@ -6,7 +6,8 @@
             <p class="item-name">{{cardDetailObj.serviceName}}</p>
             <p class="item-price">
                 <span class="fs14">¥</span>{{cardDetailObj.salePrice}}</p>
-            <p class="item-date">有效期：30天 不限次数</p>
+            <p class="item-date" v-if="cardDetailObj.type==3">有效期：365天</p>
+            <p class="item-date" v-else>有效期：365天 不限次数</p>
         </div>
         <div class="fs12">
             <h3 class="common-title">会员权益</h3>
@@ -133,7 +134,7 @@
                 var urlItem = encodeURIComponent(JSON.stringify(this.cardDetailObj))
                 
                 if (!this.phone) {
-                    this.$mint.MessageBox.confirm('购买会员卡请点击确定跳转绑定手机').then(action => {
+                    this.$mint.MessageBox.confirm('请先绑定手机号').then(action => {
                         this.$router.push({
                             path: '/MyPhone',
                             query: {
@@ -143,7 +144,7 @@
                     });
                     return false;
                 }
-                if (this.cardDetailObj.type == 1) {
+                if (this.cardDetailObj.type == 1 || this.cardDetailObj.type == 2) {
                     this.myCarShow = true;
                 } else {
                     this.$router.push({

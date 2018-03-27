@@ -31,8 +31,8 @@
           <div class="card-item" v-bind:class="{active: payClassActvie == item.id}">
             <p class="fs12" v-text="item.typeCN"></p>
             <p class="fs16 ovhd fwb" v-text="item.name"></p>
-            <img src="http://p3xltibgs.bkt.clouddn.com/icon_quick_default.png" alt="" class="img-icon_quick" v-show="payClassActvie != item.id">
-            <img src="http://p3xltibgs.bkt.clouddn.com/icon_quick_active.png" alt="" class="img-icon_quick" v-show="payClassActvie == item.id">
+            <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_default.png" alt="" class="img-icon_quick" v-show="payClassActvie != item.id">
+            <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_active.png" alt="" class="img-icon_quick" v-show="payClassActvie == item.id">
             <p class="fs12" v-show="item.expireTimeCN">有效期</br>{{item.expireTimeCN}}</p>
           </div>
         </div>
@@ -156,14 +156,14 @@
           case 1:
             type = 2;
             break;
-          case 3:
+          case 2:
             type = 2;
+            break;
+          case 3:
+            type = 1;
             break;
           case 4:
             type = 4;
-            break;
-          default:
-            type = 1;
             break;
         }
 
