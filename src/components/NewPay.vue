@@ -167,10 +167,10 @@
             type = 2;
             break;
           case 5:
-            type = 2;
+            type = 1;
             break;
           case 6:
-            type = 1;
+            type = 2;
             break;
           case 4:
             type = 4;
