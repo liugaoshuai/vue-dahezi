@@ -2,54 +2,54 @@
 
 <template>
   <div id="carpay">
-      <h3 class="common-title">请选择洗车项目</h3>
-      <div class="clearfix content">
-        <div class="card" v-for="(item,index) in cardClassList" @click="getPayClass(item.id,item.salePrice)" :key="item.id" v-if="index<2">
-          <div class="card-item" v-bind:class="{active: cardClassActvie == item.id}">
-            <p class="fs16" v-text="item.name"></p>
-            <p class="fs12" v-text="item.description?item.description:'洗车项目说明'"></p>
-            <p class="fs24 mgt10" v-text="'¥' + item.salePrice"></p>
-          </div>
+    <h3 class="common-title">请选择洗车项目</h3>
+    <div class="clearfix content">
+      <div class="card" v-for="(item,index) in cardClassList" @click="getPayClass(item.id,item.salePrice)" :key="item.id" v-if="index<2">
+        <div class="card-item" v-bind:class="{active: cardClassActvie == item.id}">
+          <p class="fs16" v-text="item.name"></p>
+          <p class="fs12" v-text="item.description?item.description:'洗车项目说明'"></p>
+          <p class="fs24 mgt10" v-text="'¥' + item.salePrice"></p>
         </div>
-      </div>
-      <div class="line"></div>
-      <h3 class="common-title">请选择支付方式</h3>
-      <div class="clearfix content">
-        <div class="pay wechat" @click="payClassClick(payClassWechat.type, payClassWechat.id)">
-          <div class="card-item" v-bind:class="{active: payClassActvie == payClassWechat.id}">
-            <p class="fs12" v-text="payClassWechat.typeCN"></p>
-            <p class="fs16 ovhd fwb" v-text="payClassWechat.name"></p>
-            <div>
-              <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay2.png" alt="" class="img-icon_quick">
-            </div>
-            <div class="card-wechat">
-              <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay.png" alt="" class="img-icon_wechat">
-            </div>
-          </div>
-        </div>
-        <div class="pay" v-for="(item,index) in payClassList" :key="item.id" @click="payClassClick(item.type, item.id)">
-          <div class="card-item" v-bind:class="{active: payClassActvie == item.id}">
-            <p class="fs12" v-text="item.typeCN"></p>
-            <p class="fs16 ovhd fwb" v-text="item.name"></p>
-            <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_default.png" alt="" class="img-icon_quick" v-show="payClassActvie != item.id">
-            <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_active.png" alt="" class="img-icon_quick" v-show="payClassActvie == item.id">
-            <p class="fs12" v-show="item.expireTimeCN">有效期</br>{{item.expireTimeCN}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="line"></div>
-      <div class="footer">
-        <div class="fs14 mgb20">还需要支付
-          <span class="fs24 mgl10">¥{{payNum}}</span>
-        </div>
-        <div class="fs12">点击确认下单，即已同意
-          <span class="yellow" @click="$goRouter('./Dahezi')">《大盒子服务协议》</span>
-        </div>
-        <div class="common-btn" @click="getPay">确认下单</div>
-        <div class="fs12 mgt10">
-          <span class="yellow" @click="$goRouter('./CardIndex')">购买年卡</span>洗车无限次</div>
       </div>
     </div>
+    <div class="line"></div>
+    <h3 class="common-title">请选择支付方式</h3>
+    <div class="clearfix content">
+      <div class="pay wechat" @click="payClassClick(payClassWechat.type, payClassWechat.id)">
+        <div class="card-item" v-bind:class="{active: payClassActvie == payClassWechat.id}">
+          <p class="fs12" v-text="payClassWechat.typeCN"></p>
+          <p class="fs16 ovhd fwb" v-text="payClassWechat.name"></p>
+          <div>
+            <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay2.png" alt="" class="img-icon_quick">
+          </div>
+          <div class="card-wechat">
+            <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay.png" alt="" class="img-icon_wechat">
+          </div>
+        </div>
+      </div>
+      <div class="pay" v-for="(item,index) in payClassList" :key="item.id" @click="payClassClick(item.type, item.id)">
+        <div class="card-item" v-bind:class="{active: payClassActvie == item.id}">
+          <p class="fs12" v-text="item.typeCN"></p>
+          <p class="fs16 ovhd fwb" v-text="item.name"></p>
+          <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_default.png" alt="" class="img-icon_quick" v-show="payClassActvie != item.id">
+          <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_active.png" alt="" class="img-icon_quick" v-show="payClassActvie == item.id">
+          <p class="fs12" v-show="item.expireTimeCN">有效期</br>{{item.expireTimeCN}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="footer">
+      <div class="fs14 mgb20">还需要支付
+        <span class="fs24 mgl10">¥{{payNum}}</span>
+      </div>
+      <div class="fs12">点击确认下单，即已同意
+        <span class="yellow" @click="$goRouter('./Dahezi')">《大盒子服务协议》</span>
+      </div>
+      <div class="common-btn" @click="getPay">确认下单</div>
+      <div class="fs12 mgt10">
+        <span class="yellow" @click="$goRouter('./CardIndex')">购买年卡</span>洗车无限次</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -78,16 +78,16 @@
       };
     },
     watch: {
-      
+
     },
     mounted: function () {
-          this.getCarClass();
+      this.getCarClass();
     },
     methods: {
 
       // 洗车机可用项目
       getCarClass: function () {
-          let deviceId = JSON.parse(localStorage.getItem('deviceId'));
+        let deviceId = JSON.parse(localStorage.getItem('deviceId'));
         var self = this,
           url = this.$api.deviceservice,
           params = {
@@ -116,10 +116,17 @@
               self.payClassActvie = 0;
               self.payType = 4;
               self.payClassList = []
-              for (var key in res.data.data) {
-                if (res.data.data[key]) {
-                  self.payClassList.push(res.data.data[key]);
-                }
+
+              if (res.data.data['coupon']) {
+                res.data.data.coupon['type'] = 5;
+                self.payClassList.push(res.data.data.coupon);
+              }
+              if (res.data.data['countCard']) {
+                res.data.data.countCard['type'] = 6;
+                self.payClassList.push(res.data.data.countCard);
+              }
+              if (res.data.data['timeCard']) {
+                self.payClassList.push(res.data.data.timeCard);
               }
             } else {
               self.$mint.MessageBox('提示', res.data.message);
@@ -146,8 +153,8 @@
       },
       // 支付 
       getPay: function () {
-          let deviceId = JSON.parse(localStorage.getItem('deviceId'));
-        
+        let deviceId = JSON.parse(localStorage.getItem('deviceId'));
+
         // 1用劵2用卡4微信
 
         // 31卡 4微信 2用劵
@@ -159,7 +166,10 @@
           case 2:
             type = 2;
             break;
-          case 3:
+          case 5:
+            type = 2;
+            break;
+          case 6:
             type = 1;
             break;
           case 4:
@@ -177,7 +187,7 @@
             cardId: type == 2 ? this.payClassActvie : '',
           },
           succeed = function (res) {
-                            localStorage.setItem('orderId', JSON.stringify(res.data.data.orderId));
+            localStorage.setItem('orderId', JSON.stringify(res.data.data.orderId));
             if (self.payType != 4) {
               self.$goRouter('./NewIsStopCar')
             } else {

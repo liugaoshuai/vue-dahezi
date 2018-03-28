@@ -89,6 +89,15 @@
           },
           succeed = function (res) {
             if (res.data.data.isFree == 0) {
+              if (res.data.data.workingOrderId > 0) {
+                self.$mint.MessageBox.confirm('存在正在洗车的订单，是否继续洗车？').then(action => {
+                  localStorage.setItem('orderId', JSON.stringify(res.data.data.workingOrderId));
+                  self.$router.push({
+                    path: '/NewCleaningCar'
+                  })
+                  return false;
+                });
+              }
               self.$mint.MessageBox('洗车机运行中');
               self.btnText = "洗车机运行中";
               return false;
@@ -109,7 +118,7 @@
           succeed = function (res) {
             if (res.data.data != 1) {
               var t = setTimeout(self.isStopRight(), 3000)
-            }else{
+            } else {
               self.isUserOrder();
             }
           };
