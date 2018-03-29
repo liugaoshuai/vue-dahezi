@@ -23,7 +23,7 @@
         <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
       </div>
       <div class="content-item" @click="goMyOrder">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_myorder.png" alt="" class="img-myicon">
+        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Myorder.png" alt="" class="img-myicon">
         <span class="fs12">我的订单</span>
         <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
       </div>

@@ -37,8 +37,7 @@
         btnText: '车辆尚未停车到位',
       };
     },
-    watch: {
-    },
+    watch: {},
     mounted: function () {
       Util.getLogin(this);
       this.isCarWasherNormal();
@@ -97,10 +96,12 @@
                   })
                   return false;
                 });
+              } else {
+                self.$mint.MessageBox('洗车机运行中');
+                self.btnText = "洗车机运行中";
+                return false;
               }
-              self.$mint.MessageBox('洗车机运行中');
-              self.btnText = "洗车机运行中";
-              return false;
+
             }
             self.isStopRight()
           };
