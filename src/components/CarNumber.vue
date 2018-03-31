@@ -14,9 +14,9 @@
             </div>
         </div>
         <div class="tac">
-            <a href="#" class="common-btn" @click="addNumberBtn" v-show="!addCarNumber">添加</a>
-            <a href="#" class="common-btn none" @click="addCarNumber = false" v-show="addCarNumber">取消</a>
-            <a href="#" class="common-btn" @click="addPlateNumber" v-show="addCarNumber">确定</a>
+            <a href="javascript:void(0);" class="common-btn" @click="addNumberBtn" v-show="!addCarNumber">添加</a>
+            <a href="javascript:void(0);" class="common-btn none" @click="addCarNumber = false" v-show="addCarNumber">取消</a>
+            <a href="javascript:void(0);" class="common-btn" @click="addPlateNumber" v-show="addCarNumber">确定</a>
 
         </div>
     </div>

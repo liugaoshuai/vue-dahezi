@@ -4,7 +4,7 @@
             <img src="http://p3xltibgs.bkt.clouddn.com/icon_duihuan.png" alt="" class="img-duihuan">
         </div>
         <input type="text" placeholder="请输入兑换码" v-model="username" class="input"></br>
-        <a href="#" @click="getExchangecCoupon" class="btn">立即兑换</a>
+        <a href="javascript:void(0);" @click="getExchangecCoupon" class="btn">立即兑换</a>
     </div>
 </template>
 

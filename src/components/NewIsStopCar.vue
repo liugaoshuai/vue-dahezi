@@ -49,7 +49,7 @@
             <p>6.请收好超长加装件，以免洗车时损坏；</p>
       </div>
       <div class="tac footer">
-        <a href="#" class="common-btn" v-bind:class="{none: btnActive}" @click="isCleanCarFun">我已确认
+        <a href="javascript:void(0);" class="common-btn" v-bind:class="{none: btnActive}" @click="isCleanCarFun">我已确认
           <span v-if="btnActive">( {{time}}s )</span>
         </a>
       </div>

@@ -2,7 +2,7 @@
   <div id="mycar" v-show="myCarShow">
     <mt-radio title="选择车辆" v-model="storeId" align="right" :options="carList"></mt-radio>
     <div class="tac mgt10">
-      <a href="#" class="common-btn" @click="goPay">继续支付</a>
+      <a href="javascript:void(0);" class="common-btn" @click="goPay">继续支付</a>
     </div>
   </div>
 </template>

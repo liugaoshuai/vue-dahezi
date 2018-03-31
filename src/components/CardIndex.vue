@@ -98,7 +98,7 @@
                 self.$axiosGet(url, params, succeed);
             },
             getCardList: function (id,name) {
-                if(name == "打蜡洗车"){
+                if(name == "打蜡精洗"){
                     this.$mint.MessageBox('洗车机运行中');
                     return false;
                 }

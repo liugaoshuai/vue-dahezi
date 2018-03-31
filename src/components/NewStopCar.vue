@@ -19,8 +19,8 @@
         </div>
       </div>
       <div class="tac">
-        <a href="#" class="common-btn" v-show="isCleanCar" @click="stopCarOk">我已拉手刹</a>
-        <a href="#" class="common-btn none" v-show="!isCleanCar" v-text="btnText"></a>
+        <a href="javascript:void(0);" class="common-btn" v-show="isCleanCar" @click="stopCarOk">我已拉手刹</a>
+        <a href="javascript:void(0);" class="common-btn none" v-show="!isCleanCar" v-text="btnText"></a>
       </div>
     </div>
   </div>
