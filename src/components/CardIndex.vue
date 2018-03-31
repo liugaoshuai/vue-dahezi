@@ -99,7 +99,7 @@
             },
             getCardList: function (id,name) {
                 if(name == "打蜡精洗"){
-                    this.$mint.MessageBox('洗车机运行中');
+                    this.$mint.MessageBox('服务即将推出！');
                     return false;
                 }
                 this.active = id
