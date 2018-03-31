@@ -262,6 +262,7 @@ img{
 }
 #cardindex .card-cleantype{
   text-align: center;
+  margin: 0 auto;
 }
 #cardindex .card-cleantype a{
   height: 3rem;
@@ -273,6 +274,7 @@ img{
   border-bottom: 1px solid #f39800;
   border-left: 1px solid #f39800;
   color: #f39800;
+  float: left;
 }
 #cardindex .card-cleantype a.active{
   background: #f39800;

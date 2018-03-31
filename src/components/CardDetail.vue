@@ -77,7 +77,7 @@
             </mt-radio>
             <div class="tac mgt10">
                 <a href="#" class="common-btn" @click="goPay" v-if="carList.length > 0">继续支付</a>
-                <a href="#" class="common-btn" @click="goCarNumber" v-else>购买月卡请先绑定车辆</a>
+                <router-link class="common-btn" to="/CarNumber" v-else>请先绑定车辆</router-link>
             </div>
         </div>
     </div>

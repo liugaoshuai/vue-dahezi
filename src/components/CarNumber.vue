@@ -6,7 +6,7 @@
                 <mt-cell title="车牌号" :value="item.carNo"></mt-cell>
             </div>
             <div v-show="carArr.length == 0" class="common-queshen">
-                <img src="http://p3xltibgs.bkt.clouddn.com/img_card.png" alt="" class="img-queshen">
+                <img src="http://p3xltibgs.bkt.clouddn.com/img_carinformation.png" alt="" class="img-queshen">
                 <p>您还没有车辆信息</p>
             </div>
             <div class="carNumber">

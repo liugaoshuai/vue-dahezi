@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <div id="cardindex">
-            <div class="card-cleantype">
+            <div class="card-cleantype clearfix">
                 <a href="javascript:void(0)" class="fs14" @click="getCardList(item.id,item.name)" v-for="(item,index) in cardClassArr" :class="{active: active == item.id,first: index == 0,last: index == cardClassArr.length-1}">{{item.name}}</a>
             </div>
             <div v-show="cardArrTest.length>0" class="clearfix">
