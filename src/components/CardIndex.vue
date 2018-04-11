@@ -7,8 +7,8 @@
             <div v-show="cardArrTest.length>0" class="clearfix">
                 <h3 class="common-title">请选择次卡</h3>
                 <div class="pay card-item-next" v-for="(item,index) in cardArrTest" :key="item.id" @click="goDetail(item)">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/bg01.png" alt="">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img-logo_small item-logo">
+                    <img src="../../static/img_card_number_a.png">
+                    <img src="../../static/img_logo.png" class="img_logo_small img_logo">
                     <p class="item-num">{{item.limitCount}}<span class="fs14">次</span></p>
                     <p class="item-price">¥{{item.salePrice}}</p>
                     <p class="item-date">有效期：365天</p>
@@ -17,8 +17,8 @@
             <div v-show="cardMonthArrTest.length>0">
                 <h3 class="common-title">请选择年卡</h3>
                 <div class="card-item-month" v-for="(item,index) in cardMonthArrTest" :key="item.id" @click="goDetail(item)">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="item-bg">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img-logo_small item-logo">
+                    <img src="../../static/img_card_year.png" class="img_card_year">
+                    <img src="../../static/img_logo.png" class="img_logo_small img_logo">
                     <p class="item-name">{{item.serviceName}}</p>
                     <p class="item-price">
                         <span class="fs14">¥</span>{{item.salePrice}}</p>
@@ -29,16 +29,16 @@
 
         <div id="cardfooter">
             <div class="item-bk" @click="goCardIndex">
-                <img src="http://p3xltibgs.bkt.clouddn.com/icon_cardactive.png" alt="" class="img-footer">
+                <img src="../../static/icon_card_active.png" class="icon_footer">
                 <div class="fs12">办卡</div>
             </div>
             <div class="item-wd" @click="goMyIndex">
-                <img src="http://p3xltibgs.bkt.clouddn.com/icon_wode.png" alt="" class="img-footer">
+                <img src="../../static/icon_wode.png" class="icon_footer">
                 <div class="fs12">我的</div>
             </div>
             <div class="item-smxc" @click="saoyisao">
                 <div>
-                    <img src="http://p3xltibgs.bkt.clouddn.com/icon_scancode.png" alt="">
+                    <img src="../../static/icon_scancode.png">
                 </div>
                 <p class="fs12">扫码洗车</p>
             </div>
@@ -56,12 +56,9 @@
                 paymentNum: 290,
                 cardClassArr: [],
                 cardArr: [],
-
                 cardArrTest: [], // 次卡
                 cardMonthArrTest: [], // 年卡
                 active: '',
-
-
             };
         },
         mounted: function () {

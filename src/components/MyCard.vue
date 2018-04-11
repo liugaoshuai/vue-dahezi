@@ -7,8 +7,8 @@
         <mt-tab-container v-model="orderType">
             <mt-tab-container-item id="1" class="pd10">
                 <div class="card-item-month" v-for="(item,index) in orderList" :key="item.id" v-show="orderList.length > 0">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="item-bg">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img-logo_small item-logo">
+                    <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="img_card_year">
+                    <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img_logo_small img_logo">
                     <p class="item-name">{{item.serviceName}}</p>
                     <p class="item-end" v-if="item.expireLeftDay>0 && item.type == 1">剩余{{item.expireLeftDay}}天</p>
                     <p class="item-end" v-if="item.expireLeftDay>0 && item.type == 2">剩余{{item.expireLeftDay}}天</p>
@@ -23,8 +23,8 @@
             </mt-tab-container-item>
             <mt-tab-container-item id="2" class="pd10">
                 <div class="card-item-month" v-for="(item,index) in orderList" :key="item.id" v-show="orderList.length > 0">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="item-bg">
-                    <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img-logo_small item-logo">
+                    <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="img_card_year">
+                    <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img_logo_small img_logo">
                     <p class="item-name">{{item.serviceName}}</p>
                     <p class="item-end" v-if="item.expireLeftDay>0">剩余{{item.expireLeftDay}}天</p>
                     <p class="item-end" v-else>{{item.statusCN}}</p>

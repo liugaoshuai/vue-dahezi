@@ -1,8 +1,8 @@
 <template>
     <div id="carddetail">
         <div class="card-item-month">
-            <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="item-bg">
-            <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img-logo_small item-logo">
+            <img src="http://p3xltibgs.bkt.clouddn.com/bg04.png" alt="" class="img_card_year">
+            <img src="http://p3xltibgs.bkt.clouddn.com/logo_small.png" alt="" class="img_logo_small img_logo">
             <p class="item-name">{{cardDetailObj.serviceName}}</p>
             <p class="item-price">
                 <span class="fs14">¥</span>{{cardDetailObj.salePrice}}</p>

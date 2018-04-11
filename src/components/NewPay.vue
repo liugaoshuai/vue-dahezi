@@ -20,10 +20,10 @@
           <p class="fs12" v-text="payClassWechat.typeCN"></p>
           <p class="fs16 ovhd fwb" v-text="payClassWechat.name"></p>
           <div>
-            <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay2.png" alt="" class="img-icon_quick">
+            <img src="../../static/icon_wechat.png" class="icon_wechat">
           </div>
           <div class="card-wechat">
-            <img src="http://p3xltibgs.bkt.clouddn.com/icon_WeChatpay.png" alt="" class="img-icon_wechat">
+            <img src="../../static/icon_wechat_logo.png" class="icon_wechat_logo">
           </div>
         </div>
       </div>
@@ -31,8 +31,8 @@
         <div class="card-item" v-bind:class="{active: payClassActvie == item.id}">
           <p class="fs12" v-text="item.typeCN"></p>
           <p class="fs16 ovhd fwb" v-text="item.name"></p>
-          <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_default.png" alt="" class="img-icon_quick" v-show="payClassActvie != item.id">
-          <img src="http://p3xltibgs.bkt.clouddn.com/icon_Quick_active.png" alt="" class="img-icon_quick" v-show="payClassActvie == item.id">
+          <img src="../../static/icon_quick.png" class="icon_wechat" v-show="payClassActvie != item.id">
+          <img src="../../static/icon_quick_active.png" class="icon_wechat" v-show="payClassActvie == item.id">
           <p class="fs12" v-show="item.expireTimeCN">有效期</br>{{item.expireTimeCN}}</p>
         </div>
       </div>
@@ -53,8 +53,6 @@
 </template>
 
 <script>
-  import Util from '../script/util';
-
 
   export default {
     data() {
@@ -158,7 +156,7 @@
         // 1用劵2用卡4微信
 
         // 31卡 4微信 2用劵
-        var type = 0;
+        var type;
         switch (this.payType) {
           case 1:
             type = 2;

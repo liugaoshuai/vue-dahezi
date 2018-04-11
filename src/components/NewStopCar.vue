@@ -4,18 +4,18 @@
   <div id="carstop">
     <div class="box">
       <div class="header clearfix">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon02.png" class="img-icon02">
+        <img src="../../static/icon_warn.png" class="icon_warn">
         <span class="">请观察前方大圆镜</br>确认车辆停在黄线内并拉手刹</span>
       </div>
       <div class="middle">
         <div class="middle-item">
-          <img src="http://p3xltibgs.bkt.clouddn.com/img_parking.png" class="img-parking">
+          <img src="../../static/img_parking.png" class="img_parking">
         </div>
         <div class="middle-item">
-          <img src="http://p3xltibgs.bkt.clouddn.com/icon04.png" class="img-icon04">
+          <img src="../../static/icon_arrow_bottom.png" class="icon_arrow_bottom">
         </div>
         <div class="middle-item">
-          <img src="http://p3xltibgs.bkt.clouddn.com/icon_handbrake.png" class="img-handbrake">
+          <img src="../../static/icon_handbrake.png" class="icon_handbrake">
         </div>
       </div>
       <div class="tac">
@@ -29,7 +29,6 @@
 <script>
   import Util from '../script/util.js';
 
-
   export default {
     data() {
       return {
@@ -37,9 +36,17 @@
         btnText: '车辆尚未停车到位',
       };
     },
-    watch: {},
     mounted: function () {
-      Util.getLogin(this);
+      let url = window.location.href;
+      let jSessionId = Util.getQueryString('jSessionId', url);
+      let deviceId = Util.getQueryString('deviceId', url);
+      if (deviceId) {
+        localStorage.setItem('deviceId', JSON.stringify(deviceId));
+      }
+      if (jSessionId) {
+        localStorage.setItem('jSessionId', JSON.stringify(jSessionId));
+      }
+      
       this.isCarWasherNormal();
     },
     methods: {
@@ -76,7 +83,6 @@
           };
         self.$axiosGet(url, params, succeed);
       },
-
       // 检查洗车机状态是否正常
       isCarWasherNormal() {
         let deviceId = JSON.parse(localStorage.getItem('deviceId'));
@@ -107,7 +113,6 @@
           };
         self.$axiosGet(url, params, succeed);
       },
-
       // 检查车辆是否停好
       isStopRight() {
         let deviceId = JSON.parse(localStorage.getItem('deviceId'));
@@ -126,8 +131,6 @@
         self.$axiosGet(url, params, succeed);
       },
       stopCarOk() {
-        // 确定停车判断是否存在已支付订单
-        // 如果已支付跳转注意事项 未支付跳转支付页
         this.$goRouter('./NewPay')
       },
     }

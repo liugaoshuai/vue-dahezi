@@ -3,8 +3,8 @@
     <div class="header">
       <div class="header-bg">
         <div class="header-img">
-          <img :src="wechatHeaderImge" alt="" v-if="wechatHeaderImge">
-          <img src="http://p3xltibgs.bkt.clouddn.com/img_Headportrait.png" alt="" v-else>
+          <img :src="wechatHeaderImge" v-if="wechatHeaderImge">
+          <img src="../../static/img_logo_header.png" v-else>
         </div>
         <span>{{wechatName}}</span>
       </div>
@@ -13,52 +13,52 @@
 
     <div class="content">
       <div class="content-item" @click="goMyCard">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_card.png" alt="" class="img-myicon">
+        <img src="../../static/icon_mycard.png" class="icon_my">
         <span class="fs12">我的卡劵</span>
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
+        <img src="../../static/icon_gogo.png" class="icon_gogo">
       </div>
       <div class="content-item" @click="goExchangeCode">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Discountcode.png" alt="" class="img-myicon">
+        <img src="../../static/icon_duihuanma.png" class="icon_my">
         <span class="fs12">兑换码</span>
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
+        <img src="../../static/icon_gogo.png" class="icon_gogo">
       </div>
       <div class="content-item" @click="goMyOrder">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Myorder.png" alt="" class="img-myicon">
+        <img src="../../static/icon_myorder.png" class="icon_my">
         <span class="fs12">我的订单</span>
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
+        <img src="../../static/icon_gogo.png" class="icon_gogo">
       </div>
       <div class="content-item" @click="goMyCar">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_mycar.png" alt="" class="img-myicon">
+        <img src="../../static/icon_mycar.png" class="icon_my">
         <span class="fs12">我的车辆</span>
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
+        <img src="../../static/icon_gogo.png" class="icon_gogo">
       </div>
       <div class="content-item" @click="goMyPhone">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_phone.png" alt="" class="img-myicon">
+        <img src="../../static/icon_myphone.png" class="icon_my">
         <span class="fs12">我的手机</span>
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
+        <img src="../../static/icon_gogo.png" class="icon_gogo">
       </div>
       <a class="content-item" href="tel:13777864743">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Customerservice.png" alt="" class="img-myicon">
+        <img src="../../static/icon_mykefu.png" class="icon_my">
         <span class="fs12">我的客服</span>
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_Arrow.png" alt="" class="img-rightmyicon">
+        <img src="../../static/icon_gogo.png" class="icon_gogo">
       </a>
     </div>
     <div id="cardfooter">
-      <div class="item-bk" @click="goCardIndex">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_newcard.png" alt="" class="img-footer">
-        <div class="fs12">办卡</div>
-      </div>
-      <div class="item-wd" @click="goMyIndex">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon_wodeactive.png" alt="" class="img-footer">
-        <div class="fs12">我的</div>
-      </div>
-      <div class="item-smxc" @click="saoyisao">
-        <div>
-          <img src="http://p3xltibgs.bkt.clouddn.com/icon_scancode.png" alt="">
+            <div class="item-bk" @click="goCardIndex">
+                <img src="../../static/icon_card.png" class="icon_footer">
+                <div class="fs12">办卡</div>
+            </div>
+            <div class="item-wd" @click="goMyIndex">
+                <img src="../../static/icon_wode_active.png" class="icon_footer">
+                <div class="fs12">我的</div>
+            </div>
+            <div class="item-smxc" @click="saoyisao">
+                <div>
+                    <img src="../../static/icon_scancode.png">
+                </div>
+                <p class="fs12">扫码洗车</p>
+            </div>
         </div>
-        <p class="fs12">扫码洗车</p>
-      </div>
-    </div>
   </div>
 </template>
 

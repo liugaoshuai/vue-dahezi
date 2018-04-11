@@ -2,7 +2,7 @@
   <div id="caritem">
     <div class="box">
       <div class="header clearfix">
-        <img src="http://p3xltibgs.bkt.clouddn.com/icon02.png" class="img-icon02">
+        <img src="http://p3xltibgs.bkt.clouddn.com/icon02.png" class="icon_warn">
         <span class="">请按照机器语音提示</br>检查车辆情况</span>
       </div>
       <div class="middle">

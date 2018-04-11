@@ -626,28 +626,28 @@ img{
 
 /* image */
 
-.img-icon02 {
+.icon_warn {
   height: 3rem;
   margin: 10px;
 }
 
-.img-parking {
+.img_parking {
   height: 20rem;
 }
 
-.img-icon04 {
+.icon_arrow_bottom {
   height: 3rem;
 }
 
-.img-handbrake {
+.icon_handbrake {
   height: 4rem;
 }
 
-.img-icon_quick {
+.icon_wechat {
   height: 4rem;
   margin: 1rem 0;
 }
-.img-footer{
+.icon_footer{
   height: 2rem;
   font-size: 0;
 }
@@ -657,7 +657,7 @@ img{
   padding-bottom: 2px;
 
 }
-.img-myicon{
+.icon_my{
   height: 3rem;
   width: 3rem;
 }
@@ -667,19 +667,19 @@ img{
 .img-logo{
   height: 2rem;
 }
-.img-logo_small{
+.img_logo_small{
   height: 1rem;
 }
 .img-map{
   height: 3rem;
 }
-.img-icon_wechat{
+.icon_wechat_logo{
   height: 1.6rem;
 }
 .img-queshen{
   height: 15rem;
 }
-.img-rightmyicon{
+.icon_gogo{
   float: right;
   vertical-align: middle;
   height: 1.2rem;
@@ -794,11 +794,11 @@ img{
 .card-item-month img{
   vertical-align: bottom;
 }
-.card-item-month .item-bg{
+.card-item-month .img_card_year{
   width: 100%;
   height: 100%;
 }
-.card-item-month .item-logo{
+.card-item-month .img_logo{
   position: absolute;
   left: 2rem;
   top: 2rem;
@@ -836,7 +836,7 @@ img{
 .card-item-next img{
   vertical-align: bottom;
 }
-.card-item-next .item-logo{
+.card-item-next .img_logo{
   position: absolute;
   top: 2rem;
   left: 0;
